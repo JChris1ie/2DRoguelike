@@ -362,8 +362,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1025090167}
   - component: {fileID: 1025090166}
-  - component: {fileID: 1025090165}
   - component: {fileID: 1025090168}
+  - component: {fileID: 1025090169}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -371,19 +371,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1025090165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1025090164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59c2cc3378f2dc84d9cb1c5718ed8fb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
 --- !u!212 &1025090166
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -472,3 +459,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1025090169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025090164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f1c4c64901358409048dbe4f57f4f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
