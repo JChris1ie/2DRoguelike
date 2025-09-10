@@ -11,6 +11,7 @@ public class test1 : MonoBehaviour
         Debug.Log("Started");
         Debug.Log("WHATS UP DOES THIS PUSH WORK!!!!!!!!!!!!!!");
         Debug.Log("YES IT DOES!!!!!!!!!!!!!!!!!!!!!");
+        Debug.Log("HI DO I WORK?????????");
 
     }
 
