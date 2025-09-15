@@ -19,13 +19,6 @@ public class MeleeCharacter : Character
     {
         meleeWeapon.SetActive(false);
     }
-    private void Update()
-    {
-        if (isWeaponOnScreen)
-        {
-
-        }
-    }
     public override void CharacterPrimaryAttack()
     {
         
