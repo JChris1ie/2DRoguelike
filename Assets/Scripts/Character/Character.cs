@@ -16,6 +16,7 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
     [Header("Stats")]
 
     public float characterHealth = 100f;
+    public float characterMaxHealth = 100f;
     public float characterPrimaryAttackDamage = 10;
 
     private void Update()
@@ -26,7 +27,7 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
     public void PlayerTakeDamage(float amount) // Can be used to decreace the players health by a given amount until their health is 0 or below
     {
         characterHealth -= amount;
-        Debug.Log($"Player health is now {characterHealth}");
+        //Debug.Log($"Player health is now {characterHealth}");
         if (characterHealth <= 0)
         {
             KillPlayer();
@@ -35,6 +36,11 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
     public void HealPlayer(float amount) // Can be used later for health buff objects or regeneration abilities
     {
         characterHealth += amount;
+        if (characterHealth >= characterMaxHealth)
+        {
+            characterHealth = characterMaxHealth;
+        }
+        Debug.Log($"Player has been healed for {amount}, player health is now {characterHealth}");
     }
     public void KillPlayer()
     {
