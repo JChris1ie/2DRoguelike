@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeCharacter : Character
+public abstract class MeleeCharacter : Character
 {
     [Header("Melee Weapon Object")]
     public GameObject meleeWeapon;
@@ -48,17 +48,4 @@ public class MeleeCharacter : Character
         isWeaponOnCooldown = false;
     }
    
-    public override void CharacterUseMainAbility()
-    {
-        Debug.Log("Hello World");
-    }
-    public override void CharacterUseDefenceAbility()
-    {
-        Debug.Log("Hello World");
-
-    }
-    public override void CharacterUseUltimateAbility()
-    {
-        Debug.Log("Hello World");
-    }
 }
