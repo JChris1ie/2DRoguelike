@@ -293,10 +293,8 @@ MonoBehaviour:
   - {fileID: 246244899866353018, guid: c417d1081777a42429f2f3b4d0aa48f7, type: 3}
   - {fileID: 7670430121754735165, guid: e8c94ab4595756d4abe78b333ff4e547, type: 3}
   bottomRight:
-  - {fileID: 2098084680226807672, guid: ddd90dbec62613e429181f53b4031228, type: 3}
-  - {fileID: 6060097357762935474, guid: e6525870b47dc5440ac7df468d9eae54, type: 3}
-  - {fileID: 246244899866353018, guid: c417d1081777a42429f2f3b4d0aa48f7, type: 3}
-  - {fileID: 7670430121754735165, guid: e8c94ab4595756d4abe78b333ff4e547, type: 3}
+  - {fileID: 6810948374368815539, guid: 1b8ceae991b36b84faefc5f4b2cbc622, type: 3}
+  - {fileID: 7425250232513020716, guid: 9eafe1056e3e69b4bb862dd948c09295, type: 3}
   bottomLeft:
   - {fileID: 2098084680226807672, guid: ddd90dbec62613e429181f53b4031228, type: 3}
   - {fileID: 6060097357762935474, guid: e6525870b47dc5440ac7df468d9eae54, type: 3}
@@ -501,7 +499,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619394800
 GameObject:
