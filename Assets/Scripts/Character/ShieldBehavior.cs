@@ -1,0 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ShieldBehavior : MonoBehaviour
+{
+    public GameObject wielder; 
+    public float minRadius; 
+    public bool allowExtend = true;
+
+    private Vector3 baseScale;
+    private void Start()
+    {
+        baseScale = transform.localScale;
+    }
+    public void SetShieldRotation()
+    {
+        if (Camera.main == null || wielder == null) return;
+
+        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorld.z = wielder.transform.position.z;
+
+        Vector2 offset = mouseWorld - wielder.transform.position;
+        float dist = offset.magnitude;
+
+        Vector2 dir = dist > 0.0001f ? offset / dist : (Vector2)transform.right;
+
+        float placeDist = allowExtend ? Mathf.Max(minRadius, dist) : minRadius;
+        transform.position = (Vector3)(dir * placeDist) + wielder.transform.position;
+
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
+        
+        if (dir.x < 0)
+            transform.localScale = new Vector3(baseScale.x, -baseScale.y, baseScale.z);
+        else
+            transform.localScale = baseScale;
+    }
+}
