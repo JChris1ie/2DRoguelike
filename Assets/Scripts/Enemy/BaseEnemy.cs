@@ -29,19 +29,7 @@ public class BaseEnemy : MonoBehaviour
     {
         enemyHealth += amount;
     }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player")){
-            Character character = other.gameObject.GetComponent<Character>();
-            if (character != null)
-            {
-                
-                character.PlayerTakeDamage(enemyPrimaryAttackDamage);
-                Debug.Log($"Player took {enemyPrimaryAttackDamage} damage");
-            }
-        }
-        
-    }
+    
     private void KillEnemy()
     {
         if (dropHealth)
