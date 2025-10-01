@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - PlayerHitbox
   - EnemyProjectileAttack
+  - Wall
   layers:
   - Default
   - TransparentFX

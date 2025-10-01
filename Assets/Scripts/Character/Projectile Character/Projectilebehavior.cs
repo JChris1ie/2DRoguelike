@@ -53,6 +53,11 @@ public class Projectilebehavior : MonoBehaviour
             
             Destroy(gameObject);
         }
+        else if (collision.CompareTag("Wall")) // unfinished/not working
+        {
+            Debug.Log("Wall collision");
+            Destroy(gameObject);
+        }
             
     }
 }
