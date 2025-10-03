@@ -9,6 +9,7 @@ public class EnemyHitbox : MonoBehaviour
     private Character character;
 
     private EnemyProjectileBehavior projectileScript;
+    private ExplosionBehavior explosionScript;
     void Awake()
     {
         enemy = GetComponentInParent<BaseEnemy>();
@@ -34,6 +35,10 @@ public class EnemyHitbox : MonoBehaviour
                 
             
         }
-
+        else if (other.gameObject.CompareTag("PlayerExplosion"))
+        {
+            explosionScript = other.gameObject.GetComponentInParent<ExplosionBehavior>();
+            enemy.EnemyTakeDamage(explosionScript.explosionDamage);
+        }
     }
 }
