@@ -57,6 +57,10 @@ public class Projectilebehavior : MonoBehaviour
             }
             Destroy(gameObject);
         }
+        else if (collision.CompareTag("Wall")) // added by Jeb
+        {
+            Destroy(gameObject);
+        }
             
     }
     private void Explode()
