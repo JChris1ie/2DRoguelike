@@ -2,56 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestCharacter : ProjectileCharacter
+public class TestCharacter : Character
 {
-    [Header("Sheild Object")]
-    public GameObject shield;
+    [Header("Ability Prefabs")]
+    public GameObject leftClickAbility;
+    public GameObject rightClickAbility;
+    public GameObject mainAbility;
+    public GameObject ultimateAbility;
 
-    [Header("Stats")]
-    public float shieldScreenTime;
-    public float shieldCooldownTime;
+    private Ability leftClickAbilityScript;
+    private Ability rightClickAbilityScript;
+    private Ability mainAbilityScript;
+    private Ability ultimateAbilityScript;
 
-    public bool isShieldOnScreen = false;
-    
-    private bool isShieldOnCooldown = false;
+
 
     private void Start()
     {
-        shield.SetActive(false);
+        leftClickAbilityScript = Instantiate(leftClickAbility, transform).GetComponent<Ability>();
+        rightClickAbilityScript = Instantiate(rightClickAbility, transform).GetComponent<Ability>();
+        mainAbilityScript = Instantiate(mainAbility, transform).GetComponent<Ability>();
+        ultimateAbilityScript = Instantiate(ultimateAbility, transform).GetComponent<Ability>();
+    }
+
+
+    public override void CharacterPrimaryAttack()
+    {
+        leftClickAbilityScript.Activate(gameObject);
     }
     public override void CharacterUseDefenceAbility()
     {
-        if (!isShieldOnScreen && !isShieldOnCooldown)
-        {
-            StartCoroutine(PutShieldOnScreen());
-        }
-
-    }
-    
-    IEnumerator PutShieldOnScreen()
-    {
-        
-        isShieldOnScreen = true;
-        shield.GetComponent<ShieldBehavior>().SetShieldRotation();
-        shield.SetActive(true);
-        yield return new WaitForSeconds(shieldScreenTime);
-        shield.SetActive(false);
-        isShieldOnScreen = false;
-        StartCoroutine(PutShieldCoolDown());
-    }
-    IEnumerator PutShieldCoolDown()
-    {
-        isShieldOnCooldown = true;
-        yield return new WaitForSeconds(shieldCooldownTime);
-        isShieldOnCooldown = false;
+        rightClickAbilityScript.Activate(gameObject);
     }
     public override void CharacterUseMainAbility()
     {
-        Debug.Log("Hello World");
+        mainAbilityScript.Activate(gameObject);
     }
 
     public override void CharacterUseUltimateAbility()
     {
-        Debug.Log("Hello World");
+        ultimateAbilityScript.Activate(gameObject);
     }
 }

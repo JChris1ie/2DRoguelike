@@ -1,52 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/*
- * public override void CharacterPrimaryAttack()
-    {
 
-        if (!isProjectileOnCooldown)
-        {
-            PutProjectileOnScreen();
-        }
-
-    }
- */
-//DO NOT USE THIS SCRIPT. IT IS NO LONGER IN USE
-public abstract class ProjectileCharacter : Character
+public class LaunchProjectile : Ability
 {
     [Header("Projectile Object")]
     public GameObject projectile;
 
     [Header("Stats")]
-   
-    public float projectileCooldownTime;
 
-    public float projectileSpeed;
+    public float projectileCooldownTime = 1f;
+
+    public float projectileSpeed = 3f;
 
     private bool isProjectileOnCooldown = false;
 
-
-
-    public override void CharacterPrimaryAttack()
+    private GameObject character;
+    
+    public override void Activate(GameObject wielder)
     {
 
         if (!isProjectileOnCooldown)
         {
+            character = wielder;
             PutProjectileOnScreen();
         }
 
     }
     public void PutProjectileOnScreen()
     {
-        GameObject newProjectile = Instantiate(projectile);
+        GameObject newProjectile = Instantiate(projectile, character.transform.position, Quaternion.identity);
         newProjectile.SetActive(true);
         var projBehavior = newProjectile.GetComponent<Projectilebehavior>();
         if (projBehavior != null)
         {
-            projBehavior.wielder = gameObject;          
-            //SprojBehavior.projectileCharacter = this;    
-            projBehavior.LaunchProjectile();            
+            projBehavior.wielder = character;
+            projBehavior.projectileSpeed = projectileSpeed;
+            projBehavior.LaunchProjectile();
         }
 
         StartCoroutine(PutProjectileOnCoolDown());
@@ -57,6 +47,4 @@ public abstract class ProjectileCharacter : Character
         yield return new WaitForSeconds(projectileCooldownTime);
         isProjectileOnCooldown = false;
     }
-
-   
 }

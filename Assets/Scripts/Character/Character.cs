@@ -15,9 +15,13 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
 
     [Header("Stats")]
 
-    public float characterHealth = 100f;
     public float characterMaxHealth = 100f;
+    public float characterHealth = 100f;
     public float characterPrimaryAttackDamage = 10;
+    public float characterUltimateChargePercent = 0;
+
+    [Header("Damage text system")]
+    public DamageMessage damageMessage;
 
     private void Update()
     {
@@ -27,7 +31,10 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
     public void PlayerTakeDamage(float amount) // Can be used to decreace the players health by a given amount until their health is 0 or below
     {
         characterHealth -= amount;
-        //Debug.Log($"Player health is now {characterHealth}");
+        if (damageMessage)
+        {
+            damageMessage.ShowMessage($"{amount}");
+        }
         if (characterHealth <= 0)
         {
             KillPlayer();
@@ -41,6 +48,15 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
             characterHealth = characterMaxHealth;
         }
         Debug.Log($"Player has been healed for {amount}, player health is now {characterHealth}");
+    }
+    public void GivePlayerUltCharge(float amount)
+    {
+        characterUltimateChargePercent += amount;
+        if (characterUltimateChargePercent >= 100f)
+        {
+            characterUltimateChargePercent = 100;
+        }
+        Debug.Log($"Player Ult Charge is now {characterUltimateChargePercent}%");
     }
     public void KillPlayer()
     {
@@ -63,8 +79,16 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
         }
         else if (Input.GetKeyDown(ultimateKey))
         {
-            CharacterUseUltimateAbility();
-        }
+            if (characterUltimateChargePercent >= 100)
+            {
+                CharacterUseUltimateAbility();
+            }
+            else
+            {
+                Debug.Log("Your ultimate is not charged!");
+            }
+
+        }   
 
     }
     // These are methods that must be created on a class by class basis in order to make every ability unique

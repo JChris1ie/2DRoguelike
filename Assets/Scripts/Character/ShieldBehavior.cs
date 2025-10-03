@@ -9,9 +9,17 @@ public class ShieldBehavior : MonoBehaviour
     public bool allowExtend = true;
 
     private Vector3 baseScale;
-    private void Start()
+    private void Awake()
     {
+        
         baseScale = transform.localScale;
+        if (baseScale == Vector3.zero)
+            baseScale = Vector3.one; 
+        baseScale = new Vector3(
+            Mathf.Abs(baseScale.x),
+            Mathf.Abs(baseScale.y),
+            Mathf.Abs(baseScale.z)
+        );
     }
     public void SetShieldRotation()
     {

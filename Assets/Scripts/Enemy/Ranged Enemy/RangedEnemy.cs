@@ -6,18 +6,20 @@ using static UnityEngine.GraphicsBuffer;
 public class RangedEnemy : BaseEnemy
 {
     public float enemyProjectileSpeed;
-    public float enemyProjectileCoolDownTime = 1;
+    
 
     public GameObject enemyProjectile;
-    public GameObject playerObject;
+    
     
     private bool isProjectileOnCoolDown = false;
 
+    
     private ShootRadius shootRadiusScript;
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         shootRadiusScript = GetComponentInChildren<ShootRadius>();
-        playerObject = GameObject.FindWithTag("Player");
+        
     }
     private void Update()
     {
@@ -38,7 +40,7 @@ public class RangedEnemy : BaseEnemy
     }
     private void ShootAtPlayer()
     {
-        Vector2 direction = (playerObject.transform.position - transform.position).normalized;
+        Vector2 direction = (characterObject.transform.position - transform.position).normalized;
         GameObject newProjectile = Instantiate(enemyProjectile, transform.position, Quaternion.identity);
         var projBehavior = newProjectile.GetComponent<EnemyProjectileBehavior>();
         if (projBehavior != null)
@@ -53,7 +55,7 @@ public class RangedEnemy : BaseEnemy
     IEnumerator PutEnemyProjectileOnCoolDown()
     {
         isProjectileOnCoolDown = true;
-        yield return new WaitForSeconds(enemyProjectileCoolDownTime);
+        yield return new WaitForSeconds(attackCooldown);
         isProjectileOnCoolDown = false;
     }
 }

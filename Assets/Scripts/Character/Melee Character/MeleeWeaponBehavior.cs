@@ -14,28 +14,52 @@ public class MeleeWeaponBehavior : MonoBehaviour
     public MeleeCharacter meleeCharacter;
 
     bool prevState;
-    
-    public void SetMeleeRotation()
+
+    private Vector3 baseScale;
+
+    private float baseRotationZ;
+    private void Awake()
     {
-        if (Camera.main == null || wielder == null) return; //Safety check to make sure there is a wielder
+        
+        baseScale = transform.localScale;
+        if (baseScale == Vector3.zero)
+            baseScale = Vector3.one;
 
+        baseScale = new Vector3(
+            Mathf.Abs(baseScale.x),
+            Mathf.Abs(baseScale.y),
+            Mathf.Abs(baseScale.z)
+        );
 
-        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition); // checks where the mouse is in the world and saves it's position
-        mouseWorld.z = wielder.transform.position.z;
-
-        Vector2 offset = mouseWorld - wielder.transform.position; // direction vector from weilder to mouse
-        float dist = offset.magnitude; // how far mouse is from wielder
-
-        Vector2 dir;
-        if (dist > 0.0001f) dir = offset / dist; // if the mouse is on the player it defaults to the wielders right direction
-        else dir = transform.right;
-
-        float placeDist = allowExtend ? Mathf.Max(minRadius, dist) : minRadius; //If the weapon can extend, it goes out but stays within the minimum distance
-
-        transform.position = (Vector3)(dir * placeDist) + wielder.transform.position; //Moves weapon to player's position
-
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg; //Converts the directions to degrees
-        transform.rotation = Quaternion.Euler(0f, 0f, angle); //rotates the weapon to the mouse
+        baseRotationZ = transform.eulerAngles.z;
     }
 
-}
+    public void SetMeleeRotation()
+    {
+        if (Camera.main == null || wielder == null) return;
+        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorld.z = wielder.transform.position.z;
+        Vector2 offset = mouseWorld - wielder.transform.position;
+        float dist = offset.magnitude;
+        Vector2 dir = dist > 0.0001f ? offset / dist : Vector2.right;
+        float placeDist = allowExtend ? Mathf.Max(minRadius, dist) : minRadius;
+        transform.position = (Vector3)(dir * placeDist) + wielder.transform.position;
+
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        if (dir.x < 0)
+        {
+           
+            transform.localScale = new Vector3(baseScale.x, -baseScale.y, baseScale.z);
+            transform.rotation = Quaternion.Euler(0f, 0f, angle - baseRotationZ);
+        }
+        else
+        {
+            
+            transform.localScale = baseScale;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle + baseRotationZ);
+        }
+    }
+
+
+} 

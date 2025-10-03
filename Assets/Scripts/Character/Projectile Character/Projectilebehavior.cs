@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Projectilebehavior : MonoBehaviour
 {
-    public GameObject wielder; 
-    [SerializeField] private float minRadius; 
-    [SerializeField] private bool allowExtend = true;
+    public GameObject wielder;
+    public GameObject explosion;
+    [SerializeField] private float minRadius = 1.5f; 
+    [SerializeField] private bool allowExtend = false;
 
-    public ProjectileCharacter projectileCharacter;
+    public float projectileSpeed;
     private Vector2 dir;
     private Vector2 movement;
 
@@ -43,14 +44,17 @@ public class Projectilebehavior : MonoBehaviour
     }
     private void MoveProjectile()
     {
-        movement = new Vector2(dir.x, dir.y).normalized * projectileCharacter.projectileSpeed * Time.deltaTime; 
+        movement = new Vector2(dir.x, dir.y).normalized * projectileSpeed * Time.deltaTime; 
         transform.position = (Vector2)transform.position + movement;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy")) // anything that the projectile should colide with aka basically anything pyshical
         {
-            
+            if (explosion != null)
+            {
+                Explode();
+            }
             Destroy(gameObject);
         }
         else if (collision.CompareTag("Wall")) // added by Jeb
@@ -58,5 +62,9 @@ public class Projectilebehavior : MonoBehaviour
             Destroy(gameObject);
         }
             
+    }
+    private void Explode()
+    {
+        GameObject newExplosion = Instantiate(explosion, transform.position, Quaternion.identity);
     }
 }

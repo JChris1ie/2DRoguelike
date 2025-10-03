@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Enemy to Spawn")]
-    public BaseEnemy enemy;
+    public GameObject enemy;
 
     [Header("Spawn Key")]
     public KeyCode spawnKey;
@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void SpawnEnemy()
     {
-        BaseEnemy newEnemy = Instantiate(enemy, transform.position, Quaternion.identity);
+        GameObject newEnemy = Instantiate(enemy, transform.position, Quaternion.identity);
 
     }
 }

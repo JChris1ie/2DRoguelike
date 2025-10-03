@@ -11,11 +11,13 @@ public class EnemyMovement : MonoBehaviour
     public bool moveEnemy = true;
 
     private ShootRadius shootRadiusScript;
+    private EnemyAttackRadius attackRadiusScript;
     private GameObject playerObject;
    
     private void Start()
     {
         shootRadiusScript = GetComponentInChildren<ShootRadius>();
+        attackRadiusScript = GetComponentInChildren<EnemyAttackRadius>();
         playerObject = GameObject.FindWithTag("Player");
     }
     void Update()
@@ -28,9 +30,12 @@ public class EnemyMovement : MonoBehaviour
                 MoveEnemy();
             }
         }
-        else // Any non-ranged enemy movement logic here
+        else 
         {
-            MoveEnemy();
+            if (!attackRadiusScript.isPlayerInRange)
+            {
+                MoveEnemy();
+            }
         }
         
         
