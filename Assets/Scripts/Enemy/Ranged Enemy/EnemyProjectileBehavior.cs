@@ -27,6 +27,10 @@ public class EnemyProjectileBehavior : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        else if (collision.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
 
     }
 }

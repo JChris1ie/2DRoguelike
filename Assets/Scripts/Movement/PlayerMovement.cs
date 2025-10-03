@@ -87,5 +87,13 @@ public class PlayerMovement : MonoBehaviour
             transform.position = endPosition; //Clips the player to the end position incase its slightly off (again for safelty purposes)
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Wall"))
+        {
+            // add code here for wall collision?
+        }
+
+    }
 }
 
