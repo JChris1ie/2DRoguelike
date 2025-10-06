@@ -1201,6 +1201,7 @@ MonoBehaviour:
   dashCooldown: 0.5
   dashDistance: 5
   dashSpeed: 50
+  touchWall: 1
 --- !u!50 &1250507958
 Rigidbody2D:
   serializedVersion: 4

@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public float dashDistance = 5f;
     public float dashSpeed = 50f;
 
+    public float touchWall = 1f;
+
 // All these are private variables for this script's logic
     private float nextFireTime = 0f;
 
@@ -66,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void MovePlayer()
     {
-        movement = new Vector2(horizontalInput, verticalInput).normalized * movementSpeed * Time.deltaTime; //"Normalized' is to ensure that diagonal movements are not faster than other movements
+        movement = new Vector2(horizontalInput, verticalInput).normalized * movementSpeed * Time.deltaTime * touchWall; //"Normalized' is to ensure that diagonal movements are not faster than other movements
         transform.position = (Vector2)transform.position + movement;
 
     }
@@ -87,13 +89,16 @@ public class PlayerMovement : MonoBehaviour
             transform.position = endPosition; //Clips the player to the end position incase its slightly off (again for safelty purposes)
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) // made by Jeb
     {
-        if (collision.CompareTag("Wall"))
+        if (collision.CompareTag("Wall")) // checks if player is touching wall, sets speed to 10% if touching
         {
-            // add code here for wall collision?
+            touchWall = 0.1f;
         }
-
+    }
+    private void OnTriggerExit2D(Collider2D collision) // made by Jeb
+    {
+        touchWall = 1f; // resets speed to 100% if not touching wall
     }
 }
 
