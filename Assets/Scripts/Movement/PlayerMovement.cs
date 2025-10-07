@@ -110,18 +110,23 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Character;
 
     void Start() {
-        rb = Character.GetComponent<Rigidbody2D>();
+        rb = Character.GetComponent<Rigidbody2D>(); // Finds player character's rigidbody object
+    }
+
+    void FixedUpdate() {
+        movementDirection = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical")); // Finds direction to move in using horizontal and vertical axis
     }
 
     void Update() {
-        movementDirection = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
-    
-        if (Input.GetKeyDown(dashKey) && Time.time >= nextFireTime) {
-            rb.velocity = movementDirection*dashSpeed;
+        rb.velocity=movementDirection*movementSpeed; // change player velocity
+        if (Input.GetKeyDown(dashKey) && Time.time >= nextFireTime) { // check for dash
+            Dash();
             nextFireTime = Time.time + dashCooldown;
-        } else {
-            rb.velocity = movementDirection*movementSpeed;
         }
+    }
+
+    void Dash() {
+        rb.velocity = movementDirection*dashSpeed; // simple change in speed to dash
     }
 }
 
