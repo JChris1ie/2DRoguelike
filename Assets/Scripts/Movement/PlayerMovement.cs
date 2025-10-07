@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode dashKey; // The dash key can be set in the editor 
 
     [Header("Stats")] // These stats are changable in the editor for testing purposes, and we can determine these values with character attributes later
-    public float movementSpeed;
+    //public float movementSpeed;
     public float dashCooldown = 2f;
     public float dashDistance = 5f;
     public float dashSpeed = 50f;
@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isDashing;
     
-    private void Start()
+    /*private void Start()
     {
         isDashing = false;
     }
@@ -99,6 +99,29 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision) // made by Jeb
     {
         touchWall = 1f; // resets speed to 100% if not touching wall
+    }*/
+
+    [SerializeField] private float movementSpeed = 4f;
+
+    private Rigidbody2D rb;
+
+    private Vector2 movementDirection;
+
+    public GameObject Character;
+
+    void Start() {
+        rb = Character.GetComponent<Rigidbody2D>();
+    }
+
+    void Update() {
+        movementDirection = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+    
+        if (Input.GetKeyDown(dashKey) && Time.time >= nextFireTime) {
+            rb.velocity = movementDirection*dashSpeed;
+            nextFireTime = Time.time + dashCooldown;
+        } else {
+            rb.velocity = movementDirection*movementSpeed;
+        }
     }
 }
 
