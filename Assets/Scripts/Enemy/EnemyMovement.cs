@@ -13,12 +13,15 @@ public class EnemyMovement : MonoBehaviour
     private ShootRadius shootRadiusScript;
     private EnemyAttackRadius attackRadiusScript;
     private GameObject playerObject;
+
+    private Rigidbody2D rb;
    
     private void Start()
     {
         shootRadiusScript = GetComponentInChildren<ShootRadius>();
         attackRadiusScript = GetComponentInChildren<EnemyAttackRadius>();
         playerObject = GameObject.FindWithTag("Player");
+        rb = gameObject.GetComponent<Rigidbody2D>();
     }
     void Update()
     {
@@ -32,7 +35,7 @@ public class EnemyMovement : MonoBehaviour
         }
         else 
         {
-            if (!attackRadiusScript.isPlayerInRange)
+            if (attackRadiusScript is null || !attackRadiusScript.isPlayerInRange)
             {
                 MoveEnemy();
             }
@@ -42,6 +45,8 @@ public class EnemyMovement : MonoBehaviour
     }
     private void MoveEnemy()
     {
-        transform.position = Vector2.MoveTowards(transform.position, playerObject.transform.position, enemySpeed * Time.deltaTime);
+        Vector2 targetPos = playerObject.transform.position;
+        Vector2 newPos = Vector2.MoveTowards(rb.position, targetPos, enemySpeed * Time.fixedDeltaTime);
+        rb.MovePosition(newPos);
     }
 }

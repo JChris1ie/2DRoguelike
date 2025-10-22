@@ -25,6 +25,12 @@ public class CharacterHitbox : MonoBehaviour
                 Debug.Log($"Player took {amount} damage");
             }
         }
+        else if (other.gameObject.CompareTag("EnemyExplosion"))
+        {
+           
+            ExplosionBehavior explosionScript = other.gameObject.GetComponentInParent<ExplosionBehavior>();
+            playerScript.PlayerTakeDamage(explosionScript.explosionDamage);
+        }
 
     }
 }
