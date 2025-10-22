@@ -55,7 +55,7 @@ public class BaseEnemy : MonoBehaviour
         }
         
     }
-    public void HealEnemyr(float amount)
+    public void HealEnemy(float amount)
     {
         enemyHealth += amount;
     }
@@ -73,5 +73,10 @@ public class BaseEnemy : MonoBehaviour
 
         Debug.Log("Enemy has been slain");
         gameObject.SetActive(false);
+        Destroy(gameObject);
+    }
+    public void DeleteEnemy()//This function should only be used for irregular deaths such as when the enemy explodes itself and does not drop anything or give ult charge.
+    {
+        Destroy(gameObject);
     }
 }

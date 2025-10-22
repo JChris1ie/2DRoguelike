@@ -9,6 +9,9 @@ TagManager:
   - PlayerHitbox
   - EnemyProjectileAttack
   - Wall
+  - PlayerExplosion
+  - PlayerObject
+  - EnemyExplosion
   layers:
   - Default
   - TransparentFX
