@@ -39,6 +39,7 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
         {
             KillPlayer();
         }
+        Debug.Log($"Player took {amount} damage");
     }
     public void HealPlayer(float amount) // Can be used later for health buff objects or regeneration abilities
     {

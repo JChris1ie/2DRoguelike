@@ -10,10 +10,12 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode dashKey; // The dash key can be set in the editor 
 
     [Header("Stats")] // These stats are changable in the editor for testing purposes, and we can determine these values with character attributes later
-    public float movementSpeed;
+    //public float movementSpeed;
     public float dashCooldown = 2f;
     public float dashDistance = 5f;
     public float dashSpeed = 50f;
+
+    public float touchWall = 1f;
 
 // All these are private variables for this script's logic
     private float nextFireTime = 0f;
@@ -26,9 +28,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 startPosition;
     private Vector2 endPosition;
 
-    private bool isDashing;
-    
-    private void Start()
+    private bool isDashing = false;
+
+    private Vector2 dashDirection;
+
+    /*private void Start()
     {
         isDashing = false;
     }
@@ -66,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void MovePlayer()
     {
-        movement = new Vector2(horizontalInput, verticalInput).normalized * movementSpeed * Time.deltaTime; //"Normalized' is to ensure that diagonal movements are not faster than other movements
+        movement = new Vector2(horizontalInput, verticalInput).normalized * movementSpeed * Time.deltaTime * touchWall; //"Normalized' is to ensure that diagonal movements are not faster than other movements
         transform.position = (Vector2)transform.position + movement;
 
     }
@@ -87,13 +91,76 @@ public class PlayerMovement : MonoBehaviour
             transform.position = endPosition; //Clips the player to the end position incase its slightly off (again for safelty purposes)
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) // made by Jeb
     {
-        if (collision.CompareTag("Wall"))
+        if (collision.CompareTag("Wall")) // checks if player is touching wall, sets speed to 10% if touching
         {
-            // add code here for wall collision?
+            touchWall = 0.1f;
         }
+    }
+    private void OnTriggerExit2D(Collider2D collision) // made by Jeb
+    {
+        touchWall = 1f; // resets speed to 100% if not touching wall
+    }*/
+
+    [SerializeField] private float movementSpeed = 4f;
+
+    private Rigidbody2D rb;
+
+    private Vector2 movementDirection;
+
+    public GameObject Character;
+
+    void Start() {
+        rb = Character.GetComponent<Rigidbody2D>(); // Finds player character's rigidbody object
+    }
+
+    void FixedUpdate() {
+        if (isDashing)
+        {
+            Dash();
+        }
+        else
+        {
+            MovePlayer();
+        }
+            
+        
+    }
+
+    void Update() {
+      
+       
+        
+        movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")); // Finds direction to move in using horizontal and vertical axis
+       
+        if (Input.GetKeyDown(dashKey) && Time.time >= nextFireTime) { // check for dash
+            SetDashing();
+            nextFireTime = Time.time + dashCooldown;
+        }
+        
+    }
+    private void MovePlayer()
+    {
+        rb.velocity = movementDirection * movementSpeed; // change player velocity
+    }
+    private void Dash()
+    {
+        rb.velocity = dashDirection * dashSpeed;
+        if (Vector2.Distance(transform.position, endPosition) < 0.1f) //Checks if the player is close enough to the end position to be considered a complete dash (I did it this way for safety purposes)
+        {
+            isDashing = false; // Now the game no longer moves the player every frame
+            transform.position = endPosition; //Clips the player to the end position incase its slightly off (again for safelty purposes)
+        }
+    }
+    private void SetDashing()
+    {
+        dashDirection = movementDirection.normalized; //Picks a direction to dash based on the last direction the player was moving
+        startPosition = transform.position; // Saves the position it is at for the MoveTowards() function
+        endPosition = startPosition + (dashDirection * dashDistance); //Choses where the dash will end based on the dashDistance variable (can be changed in the editor if you want to test this)
+        isDashing = true; // When this bool is true, the game will move the player every frame towards the end position
 
     }
-}
+}   
+
 
