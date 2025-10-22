@@ -296,6 +296,7 @@ GameObject:
   - component: {fileID: 2259486537240428355}
   - component: {fileID: 2259486537240428380}
   - component: {fileID: 2259486537240428381}
+  - component: {fileID: 3331874515992091327}
   - component: {fileID: 3202883883975923147}
   - component: {fileID: 2130750209609702356}
   m_Layer: 6
@@ -314,7 +315,7 @@ Transform:
   m_GameObject: {fileID: 2259486537240428382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2.5, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2259486537449783102}
@@ -370,7 +371,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 6.4, y: 6.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -414,6 +415,8 @@ MonoBehaviour:
   enemySpeed: 3
   useRangedMovement: 0
   moveEnemy: 1
+--- !u!95 &3331874515992091327
+Animator:
 --- !u!50 &3202883883975923147
 Rigidbody2D:
   serializedVersion: 4
@@ -422,6 +425,18 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2259486537240428382}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 308526b9d999b35449c2a94006a3c5ac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
