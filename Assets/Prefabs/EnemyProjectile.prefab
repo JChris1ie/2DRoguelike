@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1252578088527244053}
   - component: {fileID: 1575946906245741985}
   - component: {fileID: -7561568923588877098}
+  - component: {fileID: -5749490611492127180}
+  - component: {fileID: -7556873123404697074}
   m_Layer: 0
   m_Name: EnemyProjectile
   m_TagString: EnemyProjectileAttack
@@ -76,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -797171789, guid: ebd6bc0868cb9744580e943fb7aca5a9, type: 3}
   m_Color: {r: 0.9150943, g: 0.5917756, b: 0.28201014, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyObject: {fileID: 0}
   projectileDamage: 0
+  hasBeenParried: 0
   playerDirection: {x: 0, y: 0}
   speed: 0
 --- !u!50 &-7561568923588877098
@@ -140,3 +143,38 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &-5749490611492127180
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484218994049946875}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8263bc01ce9ce7446a3bf734bf83e6b9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!111 &-7556873123404697074
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484218994049946875}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 0ce04b2528586774ab97325510b8d251, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
