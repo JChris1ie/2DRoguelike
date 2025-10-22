@@ -150,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
         if (Vector2.Distance(transform.position, endPosition) < 0.1f) //Checks if the player is close enough to the end position to be considered a complete dash (I did it this way for safety purposes)
         {
             isDashing = false; // Now the game no longer moves the player every frame
-            transform.position = endPosition; //Clips the player to the end position incase its slightly off (again for safelty purposes)
+            //transform.position = endPosition; //Clips the player to the end position incase its slightly off (again for safelty purposes)
         }
     }
     private void SetDashing()
