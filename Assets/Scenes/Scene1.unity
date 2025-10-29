@@ -1115,6 +1115,7 @@ GameObject:
   - component: {fileID: 1250507956}
   - component: {fileID: 1250507958}
   - component: {fileID: 1250507959}
+  - component: {fileID: 1250507960}
   m_Layer: 6
   m_Name: TestCharacter
   m_TagString: Player
@@ -1193,7 +1194,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250507953}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1216,12 +1217,54 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1250507960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250507953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a84047fb0e4b2f4abbeacaaf2ecd7ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  current_abilities:
+  - knight
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  new_abilities:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!1001 &1394855000
 PrefabInstance:
   m_ObjectHideFlags: 0
