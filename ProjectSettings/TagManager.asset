@@ -12,6 +12,7 @@ TagManager:
   - PlayerExplosion
   - PlayerObject
   - EnemyExplosion
+  - PlayerHealthBar
   layers:
   - Default
   - TransparentFX

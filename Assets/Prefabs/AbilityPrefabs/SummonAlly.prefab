@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1079431239364808887
+--- !u!1 &6212115335680319768
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7434956140013455127}
-  - component: {fileID: 5149920265226442818}
+  - component: {fileID: 1882800961772007524}
+  - component: {fileID: 3858966956743559688}
   m_Layer: 0
-  m_Name: SwingMeleeWeapon
+  m_Name: SummonAlly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7434956140013455127
+--- !u!4 &1882800961772007524
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1079431239364808887}
+  m_GameObject: {fileID: 6212115335680319768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.10829885, y: 0.077799246, z: 3.2657986}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5149920265226442818
+--- !u!114 &3858966956743559688
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1079431239364808887}
+  m_GameObject: {fileID: 6212115335680319768}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f262e492ba0f1874a8ef6006c9de5a9f, type: 3}
+  m_Script: {fileID: 11500000, guid: fe7459d7b4738c94bbd97308e92257e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleeWeaponPrefab: {fileID: 7830818186552060968, guid: c6cffac061bfa2341a5dc6c0c468c99f, type: 3}
-  weaponScreenTime: 0.1
-  weaponCooldownTime: 0.001
+  summon: {fileID: 2395934031646409019, guid: 7d2952f5ae5cfe04caefb8e0e56c802c, type: 3}
+  onScreenTime: 10
