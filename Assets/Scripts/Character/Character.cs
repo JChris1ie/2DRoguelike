@@ -23,6 +23,20 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
     [Header("Damage text system")]
     public DamageMessage damageMessage;
 
+    [Header("Health Bar")]
+    public HealthBar healthBar;
+
+    [Header("Ult Bar")]
+    public HealthBar ultBar;
+
+    protected virtual void Start()
+    {
+        if (healthBar)
+        {
+            ultBar.ChangeFill(Mathf.Clamp01(characterUltimateChargePercent / 100));
+        }
+    }
+
     private void Update()
     {
         TrackInputs(); // This tracks inputs that will be a thing in every character (Primary, Defence, Main, Ultimate)
@@ -37,7 +51,12 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
         }
         if (characterHealth <= 0)
         {
+            characterHealth = 0;
             KillPlayer();
+        }
+        if (healthBar)
+        {
+            healthBar.ChangeFill(Mathf.Clamp01(characterHealth / characterMaxHealth));
         }
         Debug.Log($"Player took {amount} damage");
     }
@@ -48,6 +67,10 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
         {
             characterHealth = characterMaxHealth;
         }
+        if (healthBar)
+        {
+            healthBar.ChangeFill(Mathf.Clamp01(characterHealth / characterMaxHealth));
+        }
         Debug.Log($"Player has been healed for {amount}, player health is now {characterHealth}");
     }
     public void GivePlayerUltCharge(float amount)
@@ -57,7 +80,19 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
         {
             characterUltimateChargePercent = 100;
         }
+        if (ultBar)
+        {
+            ultBar.ChangeFill(Mathf.Clamp01(characterUltimateChargePercent / 100));
+        }
         Debug.Log($"Player Ult Charge is now {characterUltimateChargePercent}%");
+    }
+    private void ResetUltCharge()
+    {
+        characterUltimateChargePercent = 0;
+        if (ultBar)
+        {
+            ultBar.ChangeFill(Mathf.Clamp01(characterUltimateChargePercent / 100));
+        }
     }
     public void KillPlayer()
     {
@@ -83,6 +118,7 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
             if (characterUltimateChargePercent >= 100)
             {
                 CharacterUseUltimateAbility();
+                ResetUltCharge();
             }
             else
             {

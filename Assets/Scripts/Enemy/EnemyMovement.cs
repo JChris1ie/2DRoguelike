@@ -40,7 +40,7 @@ public class EnemyMovement : MonoBehaviour
                 MoveEnemy();
             }
         }
-        
+   
         
     }
     private void MoveEnemy()
