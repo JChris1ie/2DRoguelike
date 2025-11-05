@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 
-class Node
+public class Node
 {
     public string ability { get; set; }
 
@@ -23,7 +23,7 @@ class Node
     }
 }
 
-class AbilityTree : MonoBehaviour
+public class AbilityTree : MonoBehaviour
 {
     public Node head = new Node("knight", new Node("Longsword", new Node("Blunt Edge", new Node("Energized", new Node("Critical_hit", new Node("Lucky")), new Node("Flame_Sword", new Node("Hack_and_Slash"))))), new Node("Parry", new Node("Perfect_Parry", new Node("Bubble_Shield", new Node("Impervious", new Node("Second_Wind")), new Node("Home_Run", new Node("Passive_Regen"))))), new Node("Dash", new Node("Dash+", new Node("Speed_Up", new Node("Bullet_Time", new Node("Concussive")), new Node("Agile", new Node("Light_Speed"))))));
 
