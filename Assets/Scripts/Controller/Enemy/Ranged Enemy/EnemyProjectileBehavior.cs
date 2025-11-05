@@ -23,7 +23,7 @@ public class EnemyProjectileBehavior : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) // add walls later on
+        if (collision.CompareTag("PlayerHitbox")) // add walls later on
         {
             Destroy(gameObject);
         }
@@ -32,6 +32,10 @@ public class EnemyProjectileBehavior : MonoBehaviour
             Destroy(gameObject);
         }
 
+    }
+    public void Disable()
+    {
+        Destroy(gameObject);
     }
 }
 

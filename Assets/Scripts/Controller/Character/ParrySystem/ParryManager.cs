@@ -16,11 +16,16 @@ public class ParryManager : MonoBehaviour
     private Parry parryScript;
     private PerfectParry perfectParryScript;
 
+    public GameObject door_object; //required for reference to player abilities
+    public Door door; //required for reference to player abilities
 
     void Start()
     {
         parryScript = GetComponentInChildren<Parry>();
         perfectParryScript = GetComponentInChildren<PerfectParry>();
+
+        door_object = GameObject.FindWithTag("Door"); //required for reference to player abilities
+        door = door_object.GetComponent<Door>(); //required for reference to player abilities
     }
 
     
@@ -40,22 +45,44 @@ public class ParryManager : MonoBehaviour
 
                         if (!projScript.hasBeenParried)
                         {
-                            projScript.hasBeenParried = true;
-                            projectile.gameObject.tag = "Attack";
-                            projScript.playerDirection = -projScript.playerDirection;
-                            projScript.projectileDamage = projScript.projectileDamage * perfectParryDamageMultiplier;
-                            projScript.speed = projScript.speed * perfectParrySpeedMultiplier;
+                            if (!door.Has_ability("Perfect_Parry") && !door.Has_ability("Parry")) projScript.Disable();
+
+                            if (door.Has_ability("Perfect_Parry"))
+                            {
+                                projScript.hasBeenParried = true;
+                                projectile.gameObject.tag = "Attack";
+                                projScript.playerDirection = -projScript.playerDirection;
+                                projScript.projectileDamage = projScript.projectileDamage * perfectParryDamageMultiplier;
+                                projScript.speed = projScript.speed * perfectParrySpeedMultiplier;
+                            }
+
+                            if (!door.Has_ability("Perfect_Parry") && door.Has_ability("Parry"))
+                            {
+                                projScript.hasBeenParried = true;
+                                projectile.gameObject.tag = "Attack";
+                                projScript.playerDirection = -projScript.playerDirection;
+                                projScript.projectileDamage = projScript.projectileDamage * parryDamageMultiplier;
+                                projScript.speed = projScript.speed * parrySpeedMultiplier;
+                            }
                         }
                     }
                     else
                     {
                         if (!projScript.hasBeenParried)
                         {
-                            projScript.hasBeenParried = true;
-                            projectile.gameObject.tag = "Attack";
-                            projScript.playerDirection = -projScript.playerDirection;
-                            projScript.projectileDamage = projScript.projectileDamage * parryDamageMultiplier;
-                            projScript.speed = projScript.speed * parrySpeedMultiplier;
+                            if (door.Has_ability("Parry"))
+                            {
+                                projScript.hasBeenParried = true;
+                                projectile.gameObject.tag = "Attack";
+                                projScript.playerDirection = -projScript.playerDirection;
+                                projScript.projectileDamage = projScript.projectileDamage * parryDamageMultiplier;
+                                projScript.speed = projScript.speed * parrySpeedMultiplier;
+                            }
+
+                            else
+                            {
+                                projScript.Disable();
+                            }
 
                         }
                     }
