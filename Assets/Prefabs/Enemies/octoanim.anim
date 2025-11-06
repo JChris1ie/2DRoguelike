@@ -8,7 +8,7 @@ AnimationClip:
   m_PrefabAsset: {fileID: 0}
   m_Name: octoanim
   serializedVersion: 6
-  m_Legacy: 0
+  m_Legacy: 1
   m_Compressed: 0
   m_UseHighQualityCurve: 1
   m_RotationCurves: []
@@ -49,25 +49,8 @@ AnimationClip:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings:
-    - serializedVersion: 2
-      path: 0
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 212
-      customType: 23
-      isPPtrCurve: 1
-    pptrCurveMapping:
-    - {fileID: -73769731, guid: 2093f6672c6ed914eba2beac5d9b48dc, type: 3}
-    - {fileID: 234124789, guid: 2093f6672c6ed914eba2beac5d9b48dc, type: 3}
-    - {fileID: -1466000507, guid: 2093f6672c6ed914eba2beac5d9b48dc, type: 3}
-    - {fileID: -2119232874, guid: 2093f6672c6ed914eba2beac5d9b48dc, type: 3}
-    - {fileID: 898285244, guid: 2093f6672c6ed914eba2beac5d9b48dc, type: 3}
-    - {fileID: 927172099, guid: 2093f6672c6ed914eba2beac5d9b48dc, type: 3}
-    - {fileID: -175879427, guid: 2093f6672c6ed914eba2beac5d9b48dc, type: 3}
-    - {fileID: -1545875915, guid: 2093f6672c6ed914eba2beac5d9b48dc, type: 3}
-    - {fileID: 1968755511, guid: 2093f6672c6ed914eba2beac5d9b48dc, type: 3}
-    - {fileID: 2081588430, guid: 2093f6672c6ed914eba2beac5d9b48dc, type: 3}
+    genericBindings: []
+    pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

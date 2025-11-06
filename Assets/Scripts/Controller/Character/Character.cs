@@ -29,13 +29,14 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
     [Header("Ult Bar")]
     public HealthBar ultBar;
 
-    protected virtual void Start()
+    /*
+    public virtual void Start()
     {
         if (healthBar)
         {
             ultBar.ChangeFill(Mathf.Clamp01(characterUltimateChargePercent / 100));
         }
-    }
+    }*/
 
     private void Update()
     {

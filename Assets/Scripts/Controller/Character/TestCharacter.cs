@@ -17,9 +17,9 @@ public class TestCharacter : Character
 
 
 
-    protected override void Start()
+    protected void Start()
     {
-        base.Start();
+        //base.Start();
         leftClickAbilityScript = Instantiate(leftClickAbility, transform).GetComponent<Ability>();
         rightClickAbilityScript = Instantiate(rightClickAbility, transform).GetComponent<Ability>();
         mainAbilityScript = Instantiate(mainAbility, transform).GetComponent<Ability>();

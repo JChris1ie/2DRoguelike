@@ -18,6 +18,11 @@ public abstract class MeleeCharacter : Character
     private void Start()
     {
         meleeWeapon.SetActive(false);
+
+        if (healthBar)
+        {
+            ultBar.ChangeFill(Mathf.Clamp01(characterUltimateChargePercent / 100));
+        }
     }
     
     public override void CharacterPrimaryAttack()
