@@ -29,12 +29,21 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
     [Header("Ult Bar")]
     public HealthBar ultBar;
 
+    PlayerMovement playerMovementScript;
+
+    public GameObject door_object; //required for reference to player abilities
+    public Door door; //required for reference to player abilities
+
     protected virtual void Start()
     {
         if (healthBar)
         {
             ultBar.ChangeFill(Mathf.Clamp01(characterUltimateChargePercent / 100));
         }
+
+        playerMovementScript = gameObject.GetComponent<PlayerMovement>();
+        door_object = GameObject.FindWithTag("Door"); //required for reference to player abilities
+        door = door_object.GetComponent<Door>(); //required for reference to player abilities
     }
 
     private void Update()
@@ -44,21 +53,28 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
 
     public void PlayerTakeDamage(float amount) // Can be used to decreace the players health by a given amount until their health is 0 or below
     {
-        characterHealth -= amount;
-        if (damageMessage)
+        if (!playerMovementScript.isDashing || !door.Has_ability("Dash+"))
         {
-            damageMessage.ShowMessage($"{amount}");
+            characterHealth -= amount;
+            if (damageMessage)
+            {
+                damageMessage.ShowMessage($"{amount}");
+            }
+            if (characterHealth <= 0)
+            {
+                characterHealth = 0;
+                KillPlayer();
+            }
+            if (healthBar)
+            {
+                healthBar.ChangeFill(Mathf.Clamp01(characterHealth / characterMaxHealth));
+            }
+            Debug.Log($"Player took {amount} damage");
         }
-        if (characterHealth <= 0)
+        else
         {
-            characterHealth = 0;
-            KillPlayer();
+            Debug.Log("Dodged");
         }
-        if (healthBar)
-        {
-            healthBar.ChangeFill(Mathf.Clamp01(characterHealth / characterMaxHealth));
-        }
-        Debug.Log($"Player took {amount} damage");
     }
     public void HealPlayer(float amount) // Can be used later for health buff objects or regeneration abilities
     {

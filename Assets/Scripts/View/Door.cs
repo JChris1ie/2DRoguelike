@@ -14,12 +14,15 @@ public class Door : MonoBehaviour
 
     public AbilityTree player;
 
+    private PlayerMovement playerMovementScript;
+
     bool answered = true;
     void Start()
     {
         // Find the player's AbilityTree component (attached to the Player GameObject)
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         player = playerObject.GetComponent<AbilityTree>();
+        playerMovementScript = playerObject.GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -34,6 +37,7 @@ public class Door : MonoBehaviour
                     if (player.current_abilities[i] == "")
                     {
                         player.current_abilities[i] = new_abilities[0];
+                        Get_Pick_Up_Ability(new_abilities[0]);
                         Debug.Log(i + " New ability added! " + new_abilities[0]);
                         answered = true;
                         break;
@@ -47,12 +51,22 @@ public class Door : MonoBehaviour
                     if (player.current_abilities[i] == "")
                     {
                         player.current_abilities[i] = new_abilities[1];
+                        Get_Pick_Up_Ability(new_abilities[1]);
                         Debug.Log(i +" New ability added! "+ new_abilities[1]);
                         answered = true;
                         break;
                     }
                 }
             }
+        }
+    }
+
+    public void Get_Pick_Up_Ability(string ability)
+    {
+        Debug.Log(ability);
+        if (ability == "Speed_Up")
+        {
+            playerMovementScript.ChangeSpeed(0.50f);
         }
     }
 

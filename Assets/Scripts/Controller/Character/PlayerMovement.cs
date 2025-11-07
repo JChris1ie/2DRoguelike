@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 startPosition;
     private Vector2 endPosition;
 
-    private bool isDashing = false;
+    public bool isDashing = false;
 
     private Vector2 dashDirection;
 
@@ -166,6 +166,12 @@ public class PlayerMovement : MonoBehaviour
         endPosition = startPosition + (dashDirection * dashDistance); //Choses where the dash will end based on the dashDistance variable (can be changed in the editor if you want to test this)
         isDashing = true; // When this bool is true, the game will move the player every frame towards the end position
 
+    }
+
+    public void ChangeSpeed(float percentage)
+    {
+        movementSpeed *= 1 + percentage;
+        Debug.Log($"Player speed increased to {movementSpeed}");
     }
 }   
 
