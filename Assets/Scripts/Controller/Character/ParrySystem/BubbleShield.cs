@@ -2,12 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PerfectParry : MonoBehaviour
+public class BubbleShield : MonoBehaviour
 {
     public bool inRange = false;
 
-    private Collider2D currentProjectile;
+    public Collider2D currentProjectile;
 
+    public GameObject door_object; //required for reference to player abilities
+    public Door door; //required for reference to player abilities
+
+    private void Start()
+    {
+        door_object = GameObject.FindWithTag("Door"); //required for reference to player abilities
+        door = door_object.GetComponent<Door>(); //required for reference to player abilities
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("EnemyProjectileAttack"))
@@ -26,6 +34,6 @@ public class PerfectParry : MonoBehaviour
     }
     public Collider2D GetCurrentProjectile()
     {
-        return currentProjectile; 
+        return currentProjectile;
     }
 }

@@ -1242,6 +1242,8 @@ MonoBehaviour:
   damageMessage: {fileID: 1660628215}
   healthBar: {fileID: 1383585659}
   ultBar: {fileID: 956036517}
+  door_object: {fileID: 0}
+  door: {fileID: 0}
   leftClickAbility: {fileID: 1079431239364808887, guid: fcbf59ad76fb3544682bdf5931e08a63, type: 3}
   rightClickAbility: {fileID: 158959647534730199, guid: 89ca99a76e6333d45862029cadc456c7, type: 3}
   mainAbility: {fileID: 5831126933859024209, guid: 133d63944b93752488902d785141fa4d, type: 3}
@@ -1263,6 +1265,7 @@ MonoBehaviour:
   dashDistance: 5
   dashSpeed: 50
   touchWall: 1
+  isDashing: 0
   movementSpeed: 5
   Character: {fileID: 1250507953}
 --- !u!50 &1250507958

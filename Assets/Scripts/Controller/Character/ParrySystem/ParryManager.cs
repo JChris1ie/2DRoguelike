@@ -15,6 +15,7 @@ public class ParryManager : MonoBehaviour
 
     private Parry parryScript;
     private PerfectParry perfectParryScript;
+    private BubbleShield bubbleShieldScript;
 
     public GameObject door_object; //required for reference to player abilities
     public Door door; //required for reference to player abilities
@@ -23,6 +24,7 @@ public class ParryManager : MonoBehaviour
     {
         parryScript = GetComponentInChildren<Parry>();
         perfectParryScript = GetComponentInChildren<PerfectParry>();
+        bubbleShieldScript = GetComponentInChildren<BubbleShield>();
 
         door_object = GameObject.FindWithTag("Door"); //required for reference to player abilities
         door = door_object.GetComponent<Door>(); //required for reference to player abilities
@@ -90,6 +92,23 @@ public class ParryManager : MonoBehaviour
             }
            
               
+        }
+        else
+        {
+            Debug.Log("not in range");
+            if (bubbleShieldScript.inRange && door.Has_ability("Bubble_Shield"))
+            {
+                Collider2D projectile = bubbleShieldScript.GetCurrentProjectile();
+
+                if (projectile != null)
+                {
+                    EnemyProjectileBehavior projScript = projectile.GetComponent<EnemyProjectileBehavior>();
+                    if (projScript != null)
+                    {
+                        projScript.Disable();
+                    }
+                }
+            }
         }
 
     }

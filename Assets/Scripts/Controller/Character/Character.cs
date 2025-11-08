@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 using static UnityEngine.Rendering.DebugUI.Table;
+using System;
 
 public abstract class Character : MonoBehaviour //This class is the main parent of all character objects. It is labeled abstract because it is a blueprint, and will not be used independently
 {
@@ -53,8 +54,17 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
 
     public void PlayerTakeDamage(float amount) // Can be used to decreace the players health by a given amount until their health is 0 or below
     {
-        if (!playerMovementScript.isDashing || !door.Has_ability("Dash+"))
+        if (!playerMovementScript.isDashing || !door.Has_ability("Dash+"))  //only avoid taking damage if the player is both dashing and has dash+
         {
+            if (door.Has_ability("Agile"))  //second chance to avoid damage if player has agility
+            {
+                System.Random random = new System.Random();
+                int rng = random.Next(0, 100);  //RNJesus
+                Debug.Log(rng);
+                if (rng <= 10) return;  //compare random number to dodge odds and exit function if the attack was dodged
+            }
+            //Debug.Log("dodge failed");
+
             characterHealth -= amount;
             if (damageMessage)
             {
