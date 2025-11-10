@@ -35,6 +35,8 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
     public GameObject door_object; //required for reference to player abilities
     public Door door; //required for reference to player abilities
 
+    private bool has_second_wind = true;
+
     protected virtual void Start()
     {
         if (healthBar)
@@ -60,10 +62,13 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
             {
                 System.Random random = new System.Random();
                 int rng = random.Next(0, 100);  //RNJesus
-                Debug.Log(rng);
                 if (rng <= 10) return;  //compare random number to dodge odds and exit function if the attack was dodged
             }
-            //Debug.Log("dodge failed");
+
+            if (door.Has_ability("Impervious"))
+            {
+                amount *= 0.85f;
+            }
 
             characterHealth -= amount;
             if (damageMessage)
@@ -72,18 +77,28 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
             }
             if (characterHealth <= 0)
             {
-                characterHealth = 0;
-                KillPlayer();
+                if (door.Has_ability("Second_Wind") && has_second_wind == true)
+                {
+                    characterHealth = 75f;
+                    has_second_wind = false;
+                    Debug.Log("Second wind used");
+                }
+                else
+                {
+                    characterHealth = 0;
+                    KillPlayer();
+                }
+
             }
             if (healthBar)
             {
                 healthBar.ChangeFill(Mathf.Clamp01(characterHealth / characterMaxHealth));
             }
-            Debug.Log($"Player took {amount} damage");
+            //Debug.Log($"Player took {amount} damage");
         }
         else
         {
-            Debug.Log("Dodged");
+            //Debug.Log("Dodged");
         }
     }
     public void HealPlayer(float amount) // Can be used later for health buff objects or regeneration abilities
@@ -101,6 +116,11 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
     }
     public void GivePlayerUltCharge(float amount)
     {
+        if (door.Has_ability("Energized"))
+        {
+            amount *= 1.25f;
+        }
+
         characterUltimateChargePercent += amount;
         if (characterUltimateChargePercent >= 100f)
         {
