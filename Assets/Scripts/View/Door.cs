@@ -16,6 +16,8 @@ public class Door : MonoBehaviour
 
     private PlayerMovement playerMovementScript;
 
+    public Character character;
+
     bool answered = true;
     void Start()
     {
@@ -23,6 +25,8 @@ public class Door : MonoBehaviour
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         player = playerObject.GetComponent<AbilityTree>();
         playerMovementScript = playerObject.GetComponent<PlayerMovement>();
+        character = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
+
     }
 
     void Update()
@@ -75,7 +79,6 @@ public class Door : MonoBehaviour
         
         if (collider.CompareTag("Player") && answered == true)
         {
-            Debug.Log("Touched door");
             new_abilities = player.get_all_abilities();
             //string ability1 = new_abilities[0];
             Debug.Log(new_abilities[0]);
@@ -83,6 +86,11 @@ public class Door : MonoBehaviour
             Debug.Log(new_abilities[1]);
             answered = false;
             ChangeScene.Invoke();
+
+            if (Has_ability("Passive_Regen"))
+            {
+                character.HealPlayer(10);
+            }
         }
     }
 
