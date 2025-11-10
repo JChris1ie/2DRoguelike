@@ -12,7 +12,7 @@ public class Door : MonoBehaviour
 
     public UnityEvent ChangeScene;
 
-    private AbilityTree player;
+    public AbilityTree player;
 
     private PlayerMovement playerMovementScript;
 
@@ -93,6 +93,7 @@ public class Door : MonoBehaviour
             }
         }
     }
+
     public bool Has_ability(string ability_check)
     {
         foreach (string ability in player.current_abilities)
