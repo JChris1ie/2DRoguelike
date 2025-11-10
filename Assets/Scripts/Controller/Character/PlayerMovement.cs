@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using static UnityEditor.PlayerSettings;
 
 public class PlayerMovement : MonoBehaviour
@@ -111,8 +112,13 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject Character;
 
+    public GameObject door_object; //required for reference to player abilities
+    public Door door; //required for reference to player abilities
     void Start() {
         rb = Character.GetComponent<Rigidbody2D>(); // Finds player character's rigidbody object
+
+        door_object = GameObject.FindWithTag("Door"); //required for reference to player abilities
+        door = door_object.GetComponent<Door>(); //required for reference to player abilities
     }
 
     void FixedUpdate() {
@@ -134,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
         
         movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")); // Finds direction to move in using horizontal and vertical axis
        
-        if (Input.GetKeyDown(dashKey) && Time.time >= nextFireTime) { // check for dash
+        if (Input.GetKeyDown(dashKey) && Time.time >= nextFireTime && door.Has_ability("Dash")) { // check for dash
             SetDashing();
             nextFireTime = Time.time + dashCooldown;
         }
