@@ -93,4 +93,13 @@ public class Door : MonoBehaviour
             }
         }
     }
+    public bool Has_ability(string ability_check)
+    {
+        foreach (string ability in player.current_abilities)
+        {
+            if (ability == ability_check) return true;
+            if (ability == "") return false;
+        }
+        return false;
+    }
 }
