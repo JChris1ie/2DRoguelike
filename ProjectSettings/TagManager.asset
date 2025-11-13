@@ -13,6 +13,8 @@ TagManager:
   - PlayerObject
   - EnemyExplosion
   - PlayerHealthBar
+  - Door
+  - Floor
   layers:
   - Default
   - TransparentFX
