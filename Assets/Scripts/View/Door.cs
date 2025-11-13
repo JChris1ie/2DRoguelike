@@ -18,6 +18,8 @@ public class Door : MonoBehaviour
 
     public Character character;
 
+    public RoundCounter roundCounter;
+
     bool answered = true;
     void Start()
     {
@@ -26,6 +28,7 @@ public class Door : MonoBehaviour
         player = playerObject.GetComponent<AbilityTree>();
         playerMovementScript = playerObject.GetComponent<PlayerMovement>();
         character = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
+        roundCounter = GameObject.FindGameObjectWithTag("RoundCounter").GetComponent <RoundCounter>();
 
     }
 
@@ -77,8 +80,10 @@ public class Door : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         
+        
         if (collider.CompareTag("Player") && answered == true)
         {
+            roundCounter.IncreaceRoomCount();
             new_abilities = player.get_all_abilities();
             //string ability1 = new_abilities[0];
             Debug.Log(new_abilities[0]);
