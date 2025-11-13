@@ -79,4 +79,8 @@ public class BaseEnemy : MonoBehaviour
     {
         Destroy(gameObject);
     }
+    public void Updatedamage(float amount)
+    {
+        enemyPrimaryAttackDamage *= amount;
+    }
 }
