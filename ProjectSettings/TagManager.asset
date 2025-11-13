@@ -15,6 +15,7 @@ TagManager:
   - PlayerHealthBar
   - Door
   - Floor
+  - RoundCounter
   layers:
   - Default
   - TransparentFX
