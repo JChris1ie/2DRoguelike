@@ -21,6 +21,7 @@ public class Door : MonoBehaviour
     public RoundCounter roundCounter;
 
     bool answered = true;
+
     void Start()
     {
         // Find the player's AbilityTree component (attached to the Player GameObject)
@@ -90,6 +91,8 @@ public class Door : MonoBehaviour
             //string ability2 = new_abilities[1];
             Debug.Log(new_abilities[1]);
             answered = false;
+            StartCoroutine(DestroyFloor());
+            
             ChangeScene.Invoke();
 
             if (Has_ability("Passive_Regen"))
@@ -108,4 +111,16 @@ public class Door : MonoBehaviour
         }
         return false;
     }
+
+    IEnumerator DestroyFloor() {
+        Destroy(GameObject.FindWithTag("Floor"));
+        yield return new WaitForSeconds(.1f);
+        Destroy(GameObject.FindWithTag("Floor"));
+        yield return new WaitForSeconds(.1f);
+        Destroy(GameObject.FindWithTag("Floor"));
+        yield return new WaitForSeconds(.1f);
+        Destroy(GameObject.FindWithTag("Floor"));
+        yield return new WaitForSeconds(.1f);
+    }
 }
+
