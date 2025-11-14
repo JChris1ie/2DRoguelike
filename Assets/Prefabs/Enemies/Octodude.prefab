@@ -299,7 +299,6 @@ GameObject:
   - component: {fileID: 3202883883975923147}
   - component: {fileID: 2130750209609702356}
   - component: {fileID: 3331874515992091327}
-  - component: {fileID: -6259847589959581086}
   m_Layer: 6
   m_Name: Octodude
   m_TagString: Untagged
@@ -473,21 +472,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!111 &-6259847589959581086
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2259486537240428382}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 79fc077b667078d4aabb854ab567b584, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &2259486537449783103
 GameObject:
   m_ObjectHideFlags: 0
