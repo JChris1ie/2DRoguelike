@@ -11,10 +11,13 @@ public class BubbleShield : MonoBehaviour
     public GameObject door_object; //required for reference to player abilities
     public Door door; //required for reference to player abilities
 
+
+
     private void Start()
     {
         door_object = GameObject.FindWithTag("Door"); //required for reference to player abilities
         door = door_object.GetComponent<Door>(); //required for reference to player abilities
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

@@ -1248,7 +1248,7 @@ MonoBehaviour:
   door_object: {fileID: 0}
   door: {fileID: 0}
   leftClickAbility: {fileID: 1079431239364808887, guid: fcbf59ad76fb3544682bdf5931e08a63, type: 3}
-  rightClickAbility: {fileID: 2364034706613932016, guid: 382cd62d2d26d80418de42f01a290589, type: 3}
+  rightClickAbility: {fileID: 158959647534730199, guid: 89ca99a76e6333d45862029cadc456c7, type: 3}
   mainAbility: {fileID: 5831126933859024209, guid: 133d63944b93752488902d785141fa4d, type: 3}
   ultimateAbility: {fileID: 6212115335680319768, guid: 5f8b043c81a457f49b30b43effa94371, type: 3}
 --- !u!114 &1250507956
@@ -1556,6 +1556,8 @@ MonoBehaviour:
   damageMessage: {fileID: 1248237258}
   healthBar: {fileID: 1685626636}
   characterObject: {fileID: 0}
+  door_object: {fileID: 0}
+  door: {fileID: 0}
 --- !u!114 &1415269533
 MonoBehaviour:
   m_ObjectHideFlags: 0
