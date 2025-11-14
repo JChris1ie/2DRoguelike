@@ -26,15 +26,37 @@ public class BaseEnemy : MonoBehaviour
 
     public GameObject characterObject;
     private Character characterScript;
+
+    public GameObject door_object; //required for reference to player abilities
+    public Door door; //required for reference to player abilities
     protected virtual void Start()
     {
         enemyHealth = enemyMaxHealth;
         characterObject = GameObject.FindGameObjectWithTag("Player");
         characterScript = characterObject.GetComponent<Character>();
-        
+
+        door_object = GameObject.FindWithTag("Door"); //required for reference to player abilities
+        door = door_object.GetComponent<Door>(); //required for reference to player abilities
+
     }
     public void EnemyTakeDamage(float amount)
     {
+        if (door.Has_ability("Critical_Hit"))
+        {
+            System.Random random = new System.Random();
+            int rng = random.Next(0, 100);  //RNJesus
+            Debug.Log(rng);
+
+            if (door.Has_ability("Lucky"))
+            {
+                if (rng <= 30) amount *= 3;  //compare random number to dodge odds and exit function if the attack was dodged
+            }
+            else
+            {
+                if (rng <= 15) amount *= 3;
+            }
+        }
+
         enemyHealth -= amount;
         if (characterScript != null)
         {
@@ -51,7 +73,6 @@ public class BaseEnemy : MonoBehaviour
         else if (healthBar != null)
         {
             healthBar.ChangeFill(Mathf.Clamp01(enemyHealth / enemyMaxHealth));
-            
         }
         
     }
