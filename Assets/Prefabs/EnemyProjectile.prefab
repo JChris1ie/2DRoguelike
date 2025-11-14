@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1575946906245741985}
   - component: {fileID: -7561568923588877098}
   - component: {fileID: -5749490611492127180}
-  - component: {fileID: -7556873123404697074}
   m_Layer: 0
   m_Name: EnemyProjectile
   m_TagString: EnemyProjectileAttack
@@ -163,18 +162,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!111 &-7556873123404697074
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3484218994049946875}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 0ce04b2528586774ab97325510b8d251, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
