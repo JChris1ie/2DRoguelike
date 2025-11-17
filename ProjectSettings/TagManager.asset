@@ -17,6 +17,7 @@ TagManager:
   - Floor
   - RoundCounter
   - Bubble
+  - RoomGenerator
   layers:
   - Default
   - TransparentFX

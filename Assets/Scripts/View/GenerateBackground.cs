@@ -27,4 +27,17 @@ public class GenerateBackground : MonoBehaviour
         Instantiate(bottomLeft[Random.Range(0,bottomLeft.Length)], new Vector3(-5,-5,1), Quaternion.identity);        
     }
 
+    public IEnumerator DeleteTiles()
+    {
+        Destroy(GameObject.FindWithTag("Floor"));
+        yield return new WaitForSeconds(.1f);
+        Destroy(GameObject.FindWithTag("Floor"));
+        yield return new WaitForSeconds(.1f);
+        Destroy(GameObject.FindWithTag("Floor"));
+        yield return new WaitForSeconds(.1f);
+        Destroy(GameObject.FindWithTag("Floor"));
+        yield return new WaitForSeconds(.1f);
+        Debug.Log("Floor done");
+    }
+
 }

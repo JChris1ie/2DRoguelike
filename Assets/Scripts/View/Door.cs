@@ -113,13 +113,7 @@ public class Door : MonoBehaviour
     }
 
     IEnumerator DestroyFloor() {
-        Destroy(GameObject.FindWithTag("Floor"));
-        yield return new WaitForSeconds(.1f);
-        Destroy(GameObject.FindWithTag("Floor"));
-        yield return new WaitForSeconds(.1f);
-        Destroy(GameObject.FindWithTag("Floor"));
-        yield return new WaitForSeconds(.1f);
-        Destroy(GameObject.FindWithTag("Floor"));
+        GameObject.FindWithTag("RoomGenerator").GetComponent<GenerateBackground>().DeleteTiles();
         yield return new WaitForSeconds(.1f);
     }
 }
