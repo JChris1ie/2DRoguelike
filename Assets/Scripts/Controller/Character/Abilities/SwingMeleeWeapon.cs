@@ -46,4 +46,9 @@ public class SwingMeleeWeapon : Ability
         yield return new WaitForSeconds(weaponCooldownTime);
         isWeaponOnCooldown = false;
     }
+    public void ChangeAttackSpeed(float percentage)
+    {
+        //Debug.Log("Changing attack speed...");
+        weaponCooldownTime *= percentage;
+    }
 }

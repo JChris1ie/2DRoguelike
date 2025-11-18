@@ -15,7 +15,7 @@ public abstract class MeleeCharacter : Character
     public bool activateMelee = false;
     private bool isWeaponOnCooldown = false;
 
-    private void Start()
+    new private void Start()
     {
         meleeWeapon.SetActive(false);
     }

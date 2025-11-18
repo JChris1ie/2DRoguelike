@@ -15,6 +15,12 @@ public class Door : MonoBehaviour
     public AbilityTree player;
 
     private PlayerMovement playerMovementScript;
+    
+    private TestCharacter testCharacter;
+
+    private GameObject meleeWeapon;
+
+    private SwingMeleeWeapon swing;
 
     public Character character;
 
@@ -28,9 +34,10 @@ public class Door : MonoBehaviour
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         player = playerObject.GetComponent<AbilityTree>();
         playerMovementScript = playerObject.GetComponent<PlayerMovement>();
+        //meleeCharScript = playerObject.GetComponent<PlayerMovement>();
         character = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
         roundCounter = GameObject.FindGameObjectWithTag("RoundCounter").GetComponent <RoundCounter>();
-
+        testCharacter = character.GetComponent<TestCharacter>();
     }
 
     void Update()
@@ -76,6 +83,13 @@ public class Door : MonoBehaviour
         {
             playerMovementScript.ChangeSpeed(0.50f);
         }
+        if (ability == "Hack_and_Slash")
+        {
+            meleeWeapon = GameObject.FindWithTag("MeleeAbility");
+            swing = meleeWeapon.GetComponent<SwingMeleeWeapon>();
+            //Debug.Log("Should change atk spd");
+            swing.ChangeAttackSpeed(0.5f);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -86,9 +100,7 @@ public class Door : MonoBehaviour
         {
             roundCounter.IncreaceRoomCount();
             new_abilities = player.get_all_abilities();
-            //string ability1 = new_abilities[0];
             Debug.Log(new_abilities[0]);
-            //string ability2 = new_abilities[1];
             Debug.Log(new_abilities[1]);
             answered = false;
             StartCoroutine(DestroyFloor());

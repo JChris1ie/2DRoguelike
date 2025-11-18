@@ -17,6 +17,9 @@ TagManager:
   - Floor
   - RoundCounter
   - Bubble
+  - Parry
+  - Melee
+  - Sword
   layers:
   - Default
   - TransparentFX
