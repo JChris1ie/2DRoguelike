@@ -33,7 +33,7 @@ public abstract class MeleeCharacter : Character
     {
         activateMelee = true;
         isWeaponOnScreen = true;
-        meleeWeapon.GetComponent<MeleeWeaponBehavior>().SetMeleeRotation();
+        //meleeWeapon.GetComponent<MeleeWeaponBehavior>().SetMeleeRotation();
         meleeWeapon.SetActive(true);
         yield return new WaitForSeconds(weaponScreenTime);
         meleeWeapon.SetActive(false);

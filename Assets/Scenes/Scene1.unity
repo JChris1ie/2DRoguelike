@@ -1240,7 +1240,7 @@ MonoBehaviour:
   ultimateKey: 113
   characterMaxHealth: 100
   characterHealth: 100
-  characterPrimaryAttackDamage: 10
+  characterPrimaryAttackDamage: 20
   characterUltimateChargePercent: 0
   damageMessage: {fileID: 1660628215}
   healthBar: {fileID: 1383585659}

@@ -18,9 +18,10 @@ public class SwingMeleeWeapon : Ability
     {
         if (!isWeaponOnScreen && !isWeaponOnCooldown)
         {
+            wielder = GameObject.FindWithTag("Player");
             GameObject weaponInstance = Instantiate(meleeWeaponPrefab, wielder.transform.position, meleeWeaponPrefab.transform.rotation, wielder.transform);
             var weaponBehavior = weaponInstance.GetComponent<MeleeWeaponBehavior>();
-            weaponBehavior.wielder = wielder;
+            //weaponBehavior.wielder = wielder;
 
             StartCoroutine(PutSwordOnScreen(weaponInstance, weaponBehavior));
         }
@@ -29,8 +30,6 @@ public class SwingMeleeWeapon : Ability
     private IEnumerator PutSwordOnScreen(GameObject weaponInstance, MeleeWeaponBehavior weaponBehavior)
     {
         isWeaponOnScreen = true;
-
-        weaponBehavior.SetMeleeRotation();
         weaponInstance.SetActive(true);
 
         yield return new WaitForSeconds(weaponScreenTime);
@@ -50,5 +49,7 @@ public class SwingMeleeWeapon : Ability
     {
         //Debug.Log("Changing attack speed...");
         weaponCooldownTime *= percentage;
+        weaponScreenTime *= percentage;
+
     }
 }
