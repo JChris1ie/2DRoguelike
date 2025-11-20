@@ -1573,6 +1573,7 @@ MonoBehaviour:
   enemySpeed: 3
   useRangedMovement: 0
   moveEnemy: 1
+  stunDuration: 0
 --- !u!50 &1415269534
 Rigidbody2D:
   serializedVersion: 4
@@ -2151,7 +2152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1778293875
 SpriteRenderer:
   m_ObjectHideFlags: 0
