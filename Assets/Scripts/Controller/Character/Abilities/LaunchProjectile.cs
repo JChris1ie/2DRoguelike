@@ -16,9 +16,15 @@ public class LaunchProjectile : Ability
     private bool isProjectileOnCooldown = false;
 
     private GameObject character;
+
+    private Door door;
+    private GameObject door_obj;
     
     public override void Activate(GameObject wielder)
     {
+        door_obj = GameObject.FindWithTag("Door");
+        door = door_obj.GetComponent<Door>();
+        if (door.Has_ability("Hack_and_Slash")) projectileCooldownTime = 0.5f;
 
         if (!isProjectileOnCooldown)
         {
