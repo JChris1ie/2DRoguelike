@@ -122,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6135070830098632233}
   - component: {fileID: 2584867773144711376}
-  - component: {fileID: -6767011704616768315}
   - component: {fileID: 8502151398720262069}
   m_Layer: 0
   m_Name: BottomRight4
@@ -199,21 +198,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!111 &-6767011704616768315
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7473868893596165474}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: edcb844090dbbed4ab38e0612be3a6a3, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!95 &8502151398720262069
 Animator:
   serializedVersion: 4

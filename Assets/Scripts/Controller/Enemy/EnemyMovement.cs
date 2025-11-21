@@ -13,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
     private ShootRadius shootRadiusScript;
     private EnemyAttackRadius attackRadiusScript;
     private GameObject playerObject;
+    public float stunDuration;
 
     private Rigidbody2D rb;
    
@@ -45,6 +46,11 @@ public class EnemyMovement : MonoBehaviour
     }
     private void MoveEnemy()
     {
+        if (stunDuration > 0)
+        {
+            stunDuration -= Time.deltaTime;
+            return;
+        }
         Vector2 targetPos = playerObject.transform.position;
         Vector2 newPos = Vector2.MoveTowards(rb.position, targetPos, enemySpeed * Time.fixedDeltaTime);
         rb.MovePosition(newPos);

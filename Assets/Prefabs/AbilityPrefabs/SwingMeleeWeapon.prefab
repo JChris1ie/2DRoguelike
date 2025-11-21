@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5149920265226442818}
   m_Layer: 0
   m_Name: SwingMeleeWeapon
-  m_TagString: Untagged
+  m_TagString: MeleeAbility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meleeWeaponPrefab: {fileID: 7830818186552060968, guid: c6cffac061bfa2341a5dc6c0c468c99f, type: 3}
-  weaponScreenTime: 0.1
-  weaponCooldownTime: 0.001
+  weaponScreenTime: 0.25
+  weaponCooldownTime: 0.3

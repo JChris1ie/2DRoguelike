@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyProjectileBehavior : MonoBehaviour
 {
-   
-    public GameObject enemyObject; 
+
+    public GameObject enemyObject;
     private RangedEnemy enemyStats;
     public float projectileDamage;
 
@@ -37,5 +37,6 @@ public class EnemyProjectileBehavior : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
 }
 

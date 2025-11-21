@@ -545,7 +545,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452240579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.69, y: -0.4156422, z: 0}
+  m_LocalPosition: {x: 8.9, y: 5, z: 0}
   m_LocalScale: {x: 0.3375, y: 1.7125, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1240,7 +1240,7 @@ MonoBehaviour:
   ultimateKey: 113
   characterMaxHealth: 100
   characterHealth: 100
-  characterPrimaryAttackDamage: 10
+  characterPrimaryAttackDamage: 20
   characterUltimateChargePercent: 0
   damageMessage: {fileID: 1660628215}
   healthBar: {fileID: 1383585659}
@@ -1248,7 +1248,7 @@ MonoBehaviour:
   door_object: {fileID: 0}
   door: {fileID: 0}
   leftClickAbility: {fileID: 1079431239364808887, guid: fcbf59ad76fb3544682bdf5931e08a63, type: 3}
-  rightClickAbility: {fileID: 2364034706613932016, guid: 382cd62d2d26d80418de42f01a290589, type: 3}
+  rightClickAbility: {fileID: 158959647534730199, guid: 89ca99a76e6333d45862029cadc456c7, type: 3}
   mainAbility: {fileID: 5831126933859024209, guid: 133d63944b93752488902d785141fa4d, type: 3}
   ultimateAbility: {fileID: 6212115335680319768, guid: 5f8b043c81a457f49b30b43effa94371, type: 3}
 --- !u!114 &1250507956
@@ -1352,6 +1352,51 @@ MonoBehaviour:
   - 
   - 
   - 
+--- !u!1 &1251795964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1251795966}
+  - component: {fileID: 1251795965}
+  m_Layer: 0
+  m_Name: PauseManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1251795965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251795964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24e67721600da0e4d8e4cb97c50aaa00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseKey: 27
+--- !u!4 &1251795966
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251795964}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.00223, y: 0.8256675, z: 3.4897208}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1361334582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1461,7 +1506,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1415269530
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1556,6 +1601,8 @@ MonoBehaviour:
   damageMessage: {fileID: 1248237258}
   healthBar: {fileID: 1685626636}
   characterObject: {fileID: 0}
+  door_object: {fileID: 0}
+  door: {fileID: 0}
 --- !u!114 &1415269533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1571,6 +1618,7 @@ MonoBehaviour:
   enemySpeed: 3
   useRangedMovement: 0
   moveEnemy: 1
+  stunDuration: 0
 --- !u!50 &1415269534
 Rigidbody2D:
   serializedVersion: 4
@@ -2149,7 +2197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1778293875
 SpriteRenderer:
   m_ObjectHideFlags: 0

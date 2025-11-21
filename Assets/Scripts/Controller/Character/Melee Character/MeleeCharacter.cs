@@ -15,7 +15,7 @@ public abstract class MeleeCharacter : Character
     public bool activateMelee = false;
     private bool isWeaponOnCooldown = false;
 
-    private void Start()
+    new private void Start()
     {
         meleeWeapon.SetActive(false);
     }
@@ -33,7 +33,7 @@ public abstract class MeleeCharacter : Character
     {
         activateMelee = true;
         isWeaponOnScreen = true;
-        meleeWeapon.GetComponent<MeleeWeaponBehavior>().SetMeleeRotation();
+        //meleeWeapon.GetComponent<MeleeWeaponBehavior>().SetMeleeRotation();
         meleeWeapon.SetActive(true);
         yield return new WaitForSeconds(weaponScreenTime);
         meleeWeapon.SetActive(false);

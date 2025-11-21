@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Stats")] // These stats are changable in the editor for testing purposes, and we can determine these values with character attributes later
     //public float movementSpeed;
     public float dashCooldown = 2f;
+    private int consec_dashes = 0;
+    private float prev_dash = 0f;
     public float dashDistance = 5f;
     public float dashSpeed = 50f;
 
@@ -142,7 +144,22 @@ public class PlayerMovement : MonoBehaviour
        
         if (Input.GetKeyDown(dashKey) && Time.time >= nextFireTime && door.Has_ability("Dash")) { // check for dash
             SetDashing();
-            nextFireTime = Time.time + dashCooldown;
+
+            if (door.Has_ability("Light_Speed"))
+            {
+                if (Time.time - dashCooldown >= prev_dash) consec_dashes = 0;
+                consec_dashes += 1;
+                if (consec_dashes >= 3)
+                {
+                    nextFireTime = Time.time + dashCooldown;
+                    consec_dashes = 0;
+                }
+            }
+            else
+            {
+                nextFireTime = Time.time + dashCooldown;
+            }
+            prev_dash = Time.time;
         }
         
     }

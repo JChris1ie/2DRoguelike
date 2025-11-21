@@ -9,9 +9,23 @@ public class ShieldBehavior : MonoBehaviour
     public bool allowExtend = true;
 
     private Vector3 baseScale;
+
+    private GameObject sprite;
+
+    public GameObject door_object; //required for reference to player abilities
+    public Door door; //required for reference to player abilities
+
+    private void Start()
+    {
+        door_object = GameObject.FindWithTag("Door"); //required for reference to player abilities
+        door = door_object.GetComponent<Door>(); //required for reference to player abilities
+        sprite = GameObject.FindWithTag("Bubble");
+        sprite.SetActive(false);
+        if (door.Has_ability("Bubble_Shield")) sprite.SetActive(true);
+    }
+
     private void Awake()
     {
-        
         baseScale = transform.localScale;
         if (baseScale == Vector3.zero)
             baseScale = Vector3.one; 
