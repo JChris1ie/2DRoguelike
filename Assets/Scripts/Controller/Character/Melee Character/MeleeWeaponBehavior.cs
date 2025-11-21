@@ -22,7 +22,7 @@ public class MeleeWeaponBehavior : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         door_object = GameObject.FindWithTag("Door");
         duration = 0.25f;
-        radius = 1.5f;
+        radius = 1.2f;
 
         door = door_object.GetComponent<Door>();
         if (door.Has_ability("Longsword"))
@@ -38,7 +38,7 @@ public class MeleeWeaponBehavior : MonoBehaviour
         diffInPosition = diffInPosition/diffInPosition.magnitude; //turn vector into unit vector (magnitude is 1)
         if (diffInPosition.x >= 0) angle = Mathf.Atan(diffInPosition.y / diffInPosition.x); //if vector is in quadrants 1 or 4, arctan works as normal
         else angle = Mathf.Atan(diffInPosition.y / diffInPosition.x) + Mathf.PI; //if vector is in quadrants 2 or 3, arctan gives values on the wrong side -> account for this by adding pi
-        angle -= Mathf.PI / 4;  //start swing 45 degrees clockwise
+        angle -= Mathf.PI / 4;  //start swing from 45 degrees clockwise
         gameObject.transform.position = player.transform.position + new Vector3(Mathf.Cos(angle),Mathf.Sin(angle)) * radius; //calculate desired position for sword based on player position, angle, and radius
         gameObject.transform.Rotate(0,0, angle*180/Mathf.PI); //calculate desired starting rotation for sword using just the angle
     }
