@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
 using static UnityEngine.Rendering.DebugUI.Table;
-using System;
 
 public abstract class Character : MonoBehaviour //This class is the main parent of all character objects. It is labeled abstract because it is a blueprint, and will not be used independently
 {
@@ -142,7 +143,7 @@ public abstract class Character : MonoBehaviour //This class is the main parent 
     }
     public void KillPlayer()
     {
-        // Any dead logic will go here in the future
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Debug.Log("Player has been slain");
     }
     public void TrackInputs()
