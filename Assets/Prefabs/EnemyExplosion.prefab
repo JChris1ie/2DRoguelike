@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5932349886923295343}
   - component: {fileID: 1105471643570724097}
   - component: {fileID: 1678752344219476649}
+  - component: {fileID: 132787844377701830}
   m_Layer: 0
   m_Name: EnemyExplosion
   m_TagString: EnemyExplosion
@@ -75,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.8866873, b: 0, a: 1}
+  m_Sprite: {fileID: -1191882860, guid: b4b724b15233c3941b9e5dbf2012e81a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,6 +101,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionDamage: 50
   explosionOnScreenTime: 0.2
+--- !u!95 &132787844377701830
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887383335126742180}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a6a62f711b87ddc45b96e30cfb37a9e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7570961435855506663
 GameObject:
   m_ObjectHideFlags: 0
