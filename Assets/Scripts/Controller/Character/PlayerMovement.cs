@@ -15,8 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public float dashCooldown = 2f;
     private int consec_dashes = 0;
     private float prev_dash = 0f;
-    public float dashDistance = 5f;
-    public float dashSpeed = 50f;
+    public float dashDistance = 3f;
+    public float dashSpeed = 15f;
     public float dashTime = 0f;
 
     public float touchWall = 1f;
@@ -188,6 +188,14 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true; // When this bool is true, the game will move the player every frame towards the end position
         dashTime = dashDistance/dashSpeed;
 
+    }
+
+    public void EndDash() //ends dash prematurely and bounces back a little bit
+    {
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x - dashDirection.x, gameObject.transform.position.y - dashDirection.y, 0);
+        rb.velocity = new Vector2(0, 0);
+        dashTime = 0;
+        isDashing = false;
     }
 
     public void ChangeSpeed(float percentage)

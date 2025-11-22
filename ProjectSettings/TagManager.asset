@@ -20,6 +20,10 @@ TagManager:
   - Parry
   - Melee
   - Sword
+  - MeleeAbility
+  - Octodude
+  - Notpapyrus
+  - Freaker
   layers:
   - Default
   - TransparentFX

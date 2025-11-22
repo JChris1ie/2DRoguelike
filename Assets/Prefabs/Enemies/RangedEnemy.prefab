@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6539462416772686565}
   m_Layer: 6
   m_Name: RangedEnemy
-  m_TagString: Untagged
+  m_TagString: Notpapyrus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,6 +108,7 @@ MonoBehaviour:
   enemySpeed: 3
   useRangedMovement: 1
   moveEnemy: 1
+  stunDuration: 0
 --- !u!114 &4771531909142080263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +132,8 @@ MonoBehaviour:
   damageMessage: {fileID: 8590071031977166666}
   healthBar: {fileID: 3087796195499138478}
   characterObject: {fileID: 0}
+  door_object: {fileID: 0}
+  door: {fileID: 0}
   enemyProjectileSpeed: 3
   enemyProjectile: {fileID: 3484218994049946875, guid: 8a08f7510c5ff4a4db6e26e78c8d6201, type: 3}
 --- !u!50 &5074684332866269480
