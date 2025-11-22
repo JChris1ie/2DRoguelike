@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1785255859870563598}
   m_Layer: 0
   m_Name: ExplodingEnemy
-  m_TagString: Untagged
+  m_TagString: Freaker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,6 +108,7 @@ MonoBehaviour:
   enemySpeed: 3
   useRangedMovement: 0
   moveEnemy: 1
+  stunDuration: 0
 --- !u!114 &3529597759138208470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +132,8 @@ MonoBehaviour:
   damageMessage: {fileID: 4588277817445283175}
   healthBar: {fileID: 2598397631317221160}
   characterObject: {fileID: 0}
+  door_object: {fileID: 0}
+  door: {fileID: 0}
 --- !u!50 &3529597759138208465
 Rigidbody2D:
   serializedVersion: 4
