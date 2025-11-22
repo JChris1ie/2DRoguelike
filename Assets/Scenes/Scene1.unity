@@ -1330,8 +1330,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashKey: 32
   dashCooldown: 0.5
-  dashDistance: 3
-  dashSpeed: 30
+  dashDistance: 4
+  dashSpeed: 40
   dashTime: 0
   touchWall: 1
   isDashing: 0

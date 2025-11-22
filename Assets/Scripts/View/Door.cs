@@ -28,6 +28,8 @@ public class Door : MonoBehaviour
 
     bool answered = true;
 
+    bool hasAll = false;
+
     void Start()
     {
         // Find the player's AbilityTree component (attached to the Player GameObject)
@@ -42,6 +44,16 @@ public class Door : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKey(KeyCode.J) && Input.GetKey(KeyCode.O) && Input.GetKey(KeyCode.H) && Input.GetKey(KeyCode.N) && !hasAll)    //cheat code gives player all abilities
+        {
+            player.current_abilities = new string[] { "knight", "Longsword", "Parry", "Perfect_Parry", "Bubble_Shield", "Impervious", "Dash", "Home_Run", "Dash+", "Second_Wind", "Passive_Regen", "Blunt_Edge", "Energized", "Speed_Up", "Agile", "Flame_Sword", "Bullet_Time", "Concussive", "Light_Speed", "Critical_Hit", "Lucky", "Hack_and_Slash" };
+            playerMovementScript.ChangeSpeed(0.50f);
+            meleeWeapon = GameObject.FindWithTag("MeleeAbility");
+            swing = meleeWeapon.GetComponent<SwingMeleeWeapon>();
+            swing.ChangeAttackSpeed(0.5f);
+            hasAll = true;
+        }
+
         if (answered == false)
         {
             if (Input.GetKeyDown(KeyCode.N))
