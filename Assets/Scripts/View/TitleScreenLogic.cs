@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class TitleScreenLogic : Selectable
@@ -10,10 +9,15 @@ public class TitleScreenLogic : Selectable
 	public GameObject Controls;
 	public GameObject Audio;
 	public GameObject Graphics;
+
+	TitleScreenFade fade;
+	GameObject screen;
 	public void StartGame()
 	{
+		screen = GameObject.FindWithTag("Fade");
+		fade = screen.GetComponent<TitleScreenFade>();
+		fade.FadeOut();
 		//Debug.Log("Changing to scene1");
-		SceneManager.LoadScene("Scene1");
 	}
 	
 	public void Quit()
@@ -60,4 +64,5 @@ public class TitleScreenLogic : Selectable
 		Settings.SetActive(false);
 		Graphics.SetActive(true);
     }
+
 }
