@@ -26,6 +26,7 @@ TagManager:
   - Freaker
   - Ability1
   - Ability2
+  - Fade
   layers:
   - Default
   - TransparentFX
