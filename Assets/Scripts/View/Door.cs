@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 
 
@@ -26,7 +27,13 @@ public class Door : MonoBehaviour
 
     public RoundCounter roundCounter;
 
-    bool answered = true;
+    public bool answered = true;
+
+    GameObject textObj1;
+    GameObject textObj2;
+
+    TMP_Text text1;
+    TMP_Text text2;
 
     void Start()
     {
@@ -38,13 +45,18 @@ public class Door : MonoBehaviour
         character = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
         roundCounter = GameObject.FindGameObjectWithTag("RoundCounter").GetComponent <RoundCounter>();
         testCharacter = character.GetComponent<TestCharacter>();
+        textObj1 = GameObject.FindWithTag("Ability1");
+        textObj2 = GameObject.FindWithTag("Ability2");
+
+        text1 = textObj1.GetComponent<TMP_Text>();
+        text2 = textObj2.GetComponent<TMP_Text>();
     }
 
     void Update()
     {
         if (answered == false)
         {
-            if (Input.GetKeyDown(KeyCode.N))
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 for (int i = 0; i < player.current_abilities.Length; i++)
                 {
@@ -59,7 +71,7 @@ public class Door : MonoBehaviour
                     }
                 }
             }
-            if (Input.GetKeyDown(KeyCode.M))
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 for (int i = 0; i < player.current_abilities.Length; i++)
                 {
@@ -101,7 +113,9 @@ public class Door : MonoBehaviour
             roundCounter.IncreaceRoomCount();
             new_abilities = player.get_all_abilities();
             Debug.Log(new_abilities[0]);
+            text1.text = new_abilities[0];
             Debug.Log(new_abilities[1]);
+            text2.text = new_abilities[1];
             answered = false;
             StartCoroutine(DestroyFloor());
             

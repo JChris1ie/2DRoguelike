@@ -24,6 +24,8 @@ TagManager:
   - Octodude
   - Notpapyrus
   - Freaker
+  - Ability1
+  - Ability2
   layers:
   - Default
   - TransparentFX
