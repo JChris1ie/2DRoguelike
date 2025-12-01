@@ -1,4 +1,0 @@
-TopRight4
-TopLeft2
-BottomRight3
-BottomLeft3
