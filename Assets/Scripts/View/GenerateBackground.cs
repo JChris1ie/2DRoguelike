@@ -19,8 +19,7 @@ public class GenerateBackground : MonoBehaviour
     void Awake()
     {
         string fileContents = File.ReadAllText(filePath);
-        // Generates scene once program wakes
-        if (fileContents!="")
+        if (fileContents.Length!=0)
         {
             int counter = 0;
             foreach (string line in fileContents.Split("\n"))
