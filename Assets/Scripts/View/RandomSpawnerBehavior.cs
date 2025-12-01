@@ -79,19 +79,19 @@ public class RandomSpawnerBehavior : MonoBehaviour
     }
     IEnumerator BeginFirstWave()
     {
-        SpawnEnemies(1, false);
+        SpawnEnemies(firstWaveEnemies, false);
         yield return new WaitForSeconds(firstWaveTime);
         StartCoroutine(BeginSecondWave());
     }
     IEnumerator BeginSecondWave()
     {
-        SpawnEnemies(1, true);
+        SpawnEnemies(secondWaveEnemies, true);
         yield return new WaitForSeconds(secondWaveTime);
         StartCoroutine(BeginThirdWave());
     }
     IEnumerator BeginThirdWave()
     {
-        SpawnEnemies(1, false);
+        SpawnEnemies(thirdWaveEnemies, false);
         yield return new WaitForSeconds(thirdWaveTime);
         Destroy(gameObject);
     }
