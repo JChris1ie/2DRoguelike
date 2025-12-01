@@ -16,14 +16,14 @@ public class SaveGame : MonoBehaviour
     public void saveFloor() {
         StartCoroutine(wait(1));
         floors = GetGameObjectsWithTag("Floor");
+        txtLines = new List<string>();
         foreach (GameObject prefab in floors.GetRange(floors.Count - 4, 4))
         {
             string prefabName = prefab.name.Replace("(Clone)", "").Trim();
-            Debug.Log(prefabName);
             string line = $"{prefabName}";
             txtLines.Add(line);
         }
-        
+        File.WriteAllText(filePath, string.Empty);
         File.WriteAllLines(filePath, txtLines.ToArray());
         Debug.Log("Prefabs saved to TXT: " + filePath);
     }
