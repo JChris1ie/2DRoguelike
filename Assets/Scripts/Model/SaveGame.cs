@@ -2,14 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEditor;
+using static UnityEditor.FilePathAttribute;
+using UnityEngine.UIElements;
 
 public class SaveGame : MonoBehaviour
 {
-    private GameObject[] floors;
+    private List<GameObject> floors;
     private GameObject roundCounter;
-    public void save() {
-        floors=GameObject.FindGameObjectsWithTag("Floor");
-        roundCounter=GameObject.FindWithTag("RoundCounter");
-        File.WriteAllText("saveGame.csv", (floors[0].ToString(),floors[1].ToString(),floors[2].ToString(),floors[3].ToString(), roundCounter.GetComponent<RoundCounter>().roomCount).ToString());
+
+    List<string> txtLines = new List<string>();
+    string filePath = "Assets/Scripts/Model/savedFloors.txt";
+    public void saveFloor() {
+        StartCoroutine(wait(1));
+        floors = GetGameObjectsWithTag("Floor");
+        foreach (GameObject prefab in floors.GetRange(floors.Count - 4, 4))
+        {
+            string prefabName = prefab.name.Replace("(Clone)", "").Trim();
+            Debug.Log(prefabName);
+            string line = $"{prefabName}";
+            txtLines.Add(line);
+        }
+        
+        File.WriteAllLines(filePath, txtLines.ToArray());
+        Debug.Log("Prefabs saved to TXT: " + filePath);
+    }
+
+    IEnumerator wait(int seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+    }
+
+    List<GameObject> GetGameObjectsWithTag(string tag)
+    {
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag(tag);
+        if (gameObjects.Length == 0)
+        {
+            return new List<GameObject>();
+        }
+        return new List<GameObject>(gameObjects);
     }
 }
