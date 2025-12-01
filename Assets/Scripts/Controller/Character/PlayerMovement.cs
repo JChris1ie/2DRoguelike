@@ -15,8 +15,9 @@ public class PlayerMovement : MonoBehaviour
     public float dashCooldown = 2f;
     private int consec_dashes = 0;
     private float prev_dash = 0f;
-    public float dashDistance = 5f;
-    public float dashSpeed = 50f;
+    public float dashDistance = 3f;
+    public float dashSpeed = 15f;
+    public float dashTime = 0f;
 
     public float touchWall = 1f;
 
@@ -170,9 +171,12 @@ public class PlayerMovement : MonoBehaviour
     private void Dash()
     {
         rb.velocity = dashDirection * dashSpeed;
-        if (Vector2.Distance(transform.position, endPosition) < 0.1f) //Checks if the player is close enough to the end position to be considered a complete dash (I did it this way for safety purposes)
+        dashTime -= Time.deltaTime;
+        if (Vector2.Distance(transform.position, endPosition) < 0.1f || dashTime <= 0) //Checks if the player is close enough to the end position to be considered a complete dash (I did it this way for safety purposes)
         {
+            rb.velocity = new Vector2 (0,0);
             isDashing = false; // Now the game no longer moves the player every frame
+            dashTime = 0f;
             //transform.position = endPosition; //Clips the player to the end position incase its slightly off (again for safelty purposes)
         }
     }
@@ -182,13 +186,27 @@ public class PlayerMovement : MonoBehaviour
         startPosition = transform.position; // Saves the position it is at for the MoveTowards() function
         endPosition = startPosition + (dashDirection * dashDistance); //Choses where the dash will end based on the dashDistance variable (can be changed in the editor if you want to test this)
         isDashing = true; // When this bool is true, the game will move the player every frame towards the end position
+        dashTime = dashDistance/dashSpeed;
 
+    }
+
+    public void EndDash() //ends dash prematurely and bounces back a little bit
+    {
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x - dashDirection.x, gameObject.transform.position.y - dashDirection.y, 0);
+        rb.velocity = new Vector2(0, 0);
+        dashTime = 0;
+        isDashing = false;
     }
 
     public void ChangeSpeed(float percentage)
     {
         movementSpeed *= 1 + percentage;
         Debug.Log($"Player speed increased to {movementSpeed}");
+    }
+
+    public void resetLocation()
+    {
+        gameObject.transform.position = new Vector2(-8, -6.3f);
     }
 }   
 

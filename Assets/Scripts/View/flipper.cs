@@ -16,11 +16,10 @@ public class flipper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.D) && facingRight == false) || (Input.GetKeyDown(KeyCode.A) && facingRight == true))
+        if ((Input.GetKey(KeyCode.D) && facingRight == false && !Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.A) && facingRight == true && !Input.GetKey(KeyCode.D)))
         {
             facingRight = !facingRight;
             spriteRenderer.flipX = facingRight;
-            //Debug.Log("flipped");
         }
     }
 }

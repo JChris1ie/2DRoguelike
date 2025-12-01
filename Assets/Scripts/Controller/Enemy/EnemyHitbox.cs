@@ -42,9 +42,13 @@ public class EnemyHitbox : MonoBehaviour
                 swordScript = sword.GetComponent<MeleeWeaponBehavior>();
                 angle = swordScript.angle;
                 rigidBody = gameObject.GetComponentInParent<Rigidbody2D>();
-                rigidBody.velocity = new Vector2(Mathf.Cos(angle)*4, Mathf.Sin(angle)*4);
-                movementScript = gameObject.GetComponentInParent<EnemyMovement>();
-                movementScript.stunDuration = 0.15f;
+                if (rigidBody)
+                {
+                    rigidBody.velocity = new Vector2(Mathf.Cos(angle) * 4, Mathf.Sin(angle) * 4);
+                    movementScript = gameObject.GetComponentInParent<EnemyMovement>();
+                    movementScript.stunDuration = 0.15f;
+                }
+
             }
         }
 

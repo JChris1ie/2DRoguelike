@@ -14,8 +14,12 @@ public class EnemyMovement : MonoBehaviour
     private EnemyAttackRadius attackRadiusScript;
     private GameObject playerObject;
     public float stunDuration;
+    public float slowDuration;
+    public float concussDuration;
 
-    private Rigidbody2D rb;
+    public float slowAmt = 3;
+
+    public Rigidbody2D rb;
    
     private void Start()
     {
@@ -46,6 +50,12 @@ public class EnemyMovement : MonoBehaviour
     }
     private void MoveEnemy()
     {
+        if (concussDuration > 0)
+        {
+            concussDuration -= Time.deltaTime;
+            rb.velocity = new Vector2(0, 0);
+            return;
+        }
         if (stunDuration > 0)
         {
             stunDuration -= Time.deltaTime;
@@ -53,6 +63,11 @@ public class EnemyMovement : MonoBehaviour
         }
         Vector2 targetPos = playerObject.transform.position;
         Vector2 newPos = Vector2.MoveTowards(rb.position, targetPos, enemySpeed * Time.fixedDeltaTime);
+        if (slowDuration > 0)
+        {
+            newPos = Vector2.MoveTowards(rb.position, targetPos, enemySpeed * Time.fixedDeltaTime / slowAmt);
+            slowDuration -= Time.deltaTime;
+        }
         rb.MovePosition(newPos);
     }
 }
