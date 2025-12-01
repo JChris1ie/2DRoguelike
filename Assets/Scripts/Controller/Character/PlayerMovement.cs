@@ -203,6 +203,11 @@ public class PlayerMovement : MonoBehaviour
         movementSpeed *= 1 + percentage;
         Debug.Log($"Player speed increased to {movementSpeed}");
     }
+
+    public void resetLocation()
+    {
+        gameObject.transform.position = new Vector2(-8, -6.3f);
+    }
 }   
 
 

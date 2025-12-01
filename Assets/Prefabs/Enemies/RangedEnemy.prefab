@@ -109,6 +109,10 @@ MonoBehaviour:
   useRangedMovement: 1
   moveEnemy: 1
   stunDuration: 0
+  slowDuration: 0
+  concussDuration: 0
+  slowAmt: 3
+  rb: {fileID: 0}
 --- !u!114 &4771531909142080263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,8 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbbcae43069d2b84e857befc35494085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 200
-  enemyMaxHealth: 200
+  enemyHealth: 100
+  enemyMaxHealth: 100
   enemyPrimaryAttackDamage: 10
   attackCooldown: 1
   dropItems: 1
