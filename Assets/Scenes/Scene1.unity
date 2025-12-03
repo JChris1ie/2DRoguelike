@@ -2004,7 +2004,7 @@ MonoBehaviour:
   leftClickAbility: {fileID: 1079431239364808887, guid: fcbf59ad76fb3544682bdf5931e08a63, type: 3}
   rightClickAbility: {fileID: 158959647534730199, guid: 89ca99a76e6333d45862029cadc456c7, type: 3}
   mainAbility: {fileID: 5831126933859024209, guid: 133d63944b93752488902d785141fa4d, type: 3}
-  ultimateAbility: {fileID: 6212115335680319768, guid: 5f8b043c81a457f49b30b43effa94371, type: 3}
+  ultimateAbility: {fileID: 8646180537248907191, guid: c5f214ce255f1e9469387a37997a2f48, type: 3}
 --- !u!114 &1250507956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2882,7 +2882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
