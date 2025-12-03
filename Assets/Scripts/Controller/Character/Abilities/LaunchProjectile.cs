@@ -53,4 +53,10 @@ public class LaunchProjectile : Ability
         yield return new WaitForSeconds(projectileCooldownTime);
         isProjectileOnCooldown = false;
     }
+
+    public void GetDemolitionist()
+    {
+        projectileSpeed = 30;
+        projectileCooldownTime = 0.1f;
+    }
 }

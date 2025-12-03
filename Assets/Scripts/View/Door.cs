@@ -27,6 +27,8 @@ public class Door : MonoBehaviour
 
     public RoundCounter roundCounter;
 
+    private LaunchProjectile launch;
+
     public bool answered = true;
 
     GameObject textObj1;
@@ -101,6 +103,11 @@ public class Door : MonoBehaviour
             swing = meleeWeapon.GetComponent<SwingMeleeWeapon>();
             //Debug.Log("Should change atk spd");
             swing.ChangeAttackSpeed(0.5f);
+        }
+        if(ability == "Demolitionist")
+        {
+            launch = GameObject.FindWithTag("Bomb").GetComponent<LaunchProjectile>();
+            launch.GetDemolitionist();
         }
     }
 

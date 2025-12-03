@@ -27,6 +27,7 @@ TagManager:
   - Ability1
   - Ability2
   - Fade
+  - Bomb
   layers:
   - Default
   - TransparentFX
