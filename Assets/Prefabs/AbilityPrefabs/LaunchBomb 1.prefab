@@ -16,8 +16,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3017284989615646367, guid: b9b4023d16a768245bfe9f81a2f03001, type: 3}
     - target: {fileID: 5512107857578356945, guid: 932499f261cc6de4c844bdf532a34a12, type: 3}
+      propertyPath: projectileSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5512107857578356945, guid: 932499f261cc6de4c844bdf532a34a12, type: 3}
       propertyPath: projectileCooldownTime
-      value: 3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 9176953412958912327, guid: 932499f261cc6de4c844bdf532a34a12, type: 3}
       propertyPath: m_RootOrder
