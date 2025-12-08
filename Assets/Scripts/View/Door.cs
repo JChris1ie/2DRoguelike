@@ -115,7 +115,7 @@ public class Door : MonoBehaviour
     {
         
         
-        if (collider.CompareTag("Player") && answered == true)
+        if (collider.CompareTag("Player") && answered == true && GameObject.FindGameObjectsWithTag("Spawner").Length==0 && GameObject.FindGameObjectsWithTag("Octodude").Length==0 && GameObject.FindGameObjectsWithTag("Freaker").Length==0 && GameObject.FindGameObjectsWithTag("Notpapyrus").Length==0)
         {
             roundCounter.IncreaceRoomCount();
             new_abilities = player.get_all_abilities();

@@ -28,6 +28,7 @@ TagManager:
   - Ability2
   - Fade
   - Bomb
+  - Spawner
   layers:
   - Default
   - TransparentFX
