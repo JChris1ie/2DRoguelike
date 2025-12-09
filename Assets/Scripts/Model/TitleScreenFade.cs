@@ -15,8 +15,10 @@ public class TitleScreenFade : MonoBehaviour
     private float elapsed;
     public bool isWaiting;
     private RectTransform trans;
+    private bool forGame;
     void Start()
     {
+        forGame = true;
         elapsed = 0;
         isChanging = 0;
         uiImage = gameObject.GetComponent<Image>();
@@ -52,7 +54,16 @@ public class TitleScreenFade : MonoBehaviour
             {
                 elapsed = 0;
                 isChanging = 0;
-                SceneManager.LoadScene("Scene1");
+                if (forGame)
+                {
+                    Debug.Log("Starting game");
+                    SceneManager.LoadScene("Scene1");
+                }
+                else
+                {
+                    Debug.Log("Starting tutorial");
+                    SceneManager.LoadScene("Tutorial");
+                }
                 return;
             }
             elapsed += Time.deltaTime;
@@ -69,10 +80,17 @@ public class TitleScreenFade : MonoBehaviour
     {
         isChanging = 2;
     }
-    public void FadeOut()
+    public void FadeOutForGame()
     {
         trans.anchoredPosition = new Vector2(0, 0);
         isChanging = 1;
+        forGame = true;
+    }
+    public void FadeOutForTutorial()
+    {
+        trans.anchoredPosition = new Vector2(0, 0);
+        isChanging = 1;
+        forGame = false;
     }
 }
 
