@@ -68,9 +68,9 @@ public class Door : MonoBehaviour
                         player.current_abilities[i] = new_abilities[0];
                         Get_Pick_Up_Ability(new_abilities[0]);
                         Debug.Log(i + " New ability added! " + new_abilities[0]);
-                        answered = true;
                         break;
                     }
+                answered = true;
                 }
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -82,9 +82,9 @@ public class Door : MonoBehaviour
                         player.current_abilities[i] = new_abilities[1];
                         Get_Pick_Up_Ability(new_abilities[1]);
                         Debug.Log(i +" New ability added! "+ new_abilities[1]);
-                        answered = true;
                         break;
                     }
+                answered = true;
                 }
             }
         }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class FadeLogic : MonoBehaviour
 {
     // Start is called before the first frame update
-    private float fadeTime = 1.5f;
+    private float fadeTime = 0.75f;
     public Image uiImage; 
     private float opacity;
     private int isChanging;

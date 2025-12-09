@@ -62,7 +62,7 @@ public class BaseEnemy : MonoBehaviour
         {
             characterScript.GivePlayerUltCharge(amount / 10);
         }
-        if (damageMessage)
+        if (damageMessage && gameObject)
         {
             damageMessage.ShowMessage($"{amount}");
         }
