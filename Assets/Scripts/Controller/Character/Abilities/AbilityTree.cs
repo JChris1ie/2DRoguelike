@@ -11,7 +11,6 @@ public class Node
     public Node[] nodes = new Node[3];
     public Node node1 { get; set; }
     public Node node2 { get; set; }
-
     public Node node3 { get; set; }
 
     public Node(string ability, Node node1 = null, Node node2 = null, Node node3 = null)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
@@ -29,6 +30,12 @@ public class PauseManager : MonoBehaviour
                     // take away pause screen here 
                 }
             }
+
+            if (paused && Input.GetKeyDown(KeyCode.R))
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene("Title Screen");
+        }
         
         
         

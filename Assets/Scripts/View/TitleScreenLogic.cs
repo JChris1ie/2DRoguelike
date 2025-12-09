@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class TitleScreenLogic : Selectable
 {
@@ -31,7 +30,7 @@ public class TitleScreenLogic : Selectable
 	public void Quit()
 	{
 		Application.Quit();
-		UnityEditor.EditorApplication.isPlaying = false;
+		//UnityEditor.EditorApplication.isPlaying = false;
 	}
 
 	public void GoToSettings()
