@@ -5,6 +5,7 @@ using System.Collections;
 public class TitleScreenLogic : Selectable
 {
 	public GameObject Title;
+	public GameObject Tutorial;
 	public GameObject Settings;
 	public GameObject Controls;
 	public GameObject Audio;
@@ -16,10 +17,17 @@ public class TitleScreenLogic : Selectable
 	{
 		screen = GameObject.FindWithTag("Fade");
 		fade = screen.GetComponent<TitleScreenFade>();
-		fade.FadeOut();
+		fade.FadeOutForGame();
 		//Debug.Log("Changing to scene1");
 	}
-	
+	public void StartTutorial()
+	{
+		screen = GameObject.FindWithTag("Fade");
+		fade = screen.GetComponent<TitleScreenFade>();
+		fade.FadeOutForTutorial();
+		//Debug.Log("Changing to scene1");
+	}
+
 	public void Quit()
 	{
 		Application.Quit();
